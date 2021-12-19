@@ -1,0 +1,91 @@
+2021-12-11 18:03:43.646  INFO 4331 --- [restartedMain] c.t.admin.TiendaBackEndApplication       : Starting TiendaBackEndApplication using Java 16.0.2 on iMac-Grande.local with PID 4331 (/Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd/target/classes started by nachogonzalez in /Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd)
+2021-12-11 18:03:43.646  INFO 4331 --- [restartedMain] c.t.admin.TiendaBackEndApplication       : No active profile set, falling back to default profiles: default
+2021-12-11 18:03:43.737  INFO 4331 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-11 18:03:43.744  INFO 4331 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 2 JPA repository interfaces.
+2021-12-11 18:03:43.800  INFO 4331 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-11 18:03:43.801  INFO 4331 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-11 18:03:43.801  INFO 4331 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-11 18:03:43.809  INFO 4331 --- [restartedMain] o.a.c.c.C.[.[localhost].[/TiendaAdmin]   : Initializing Spring embedded WebApplicationContext
+2021-12-11 18:03:43.809  INFO 4331 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 161 ms
+2021-12-11 18:03:43.828  INFO 4331 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-11 18:03:43.831  INFO 4331 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2021-12-11 18:03:43.840  INFO 4331 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2021-12-11 18:03:43.840  INFO 4331 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-11 18:03:43.878  INFO 4331 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-11 18:03:43.878  INFO 4331 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-11 18:03:43.888  WARN 4331 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-11 18:03:43.938  INFO 4331 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/images/**'] with []
+2021-12-11 18:03:43.938  INFO 4331 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-12-11 18:03:43.938  INFO 4331 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**'] with []
+2021-12-11 18:03:43.943  INFO 4331 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@76dca2cf, org.springframework.security.web.context.SecurityContextPersistenceFilter@5014712e, org.springframework.security.web.header.HeaderWriterFilter@35186180, org.springframework.security.web.csrf.CsrfFilter@7100a333, org.springframework.security.web.authentication.logout.LogoutFilter@4841a859, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@75c5ca4d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@23670318, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@55857295, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@3f743012, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@32502c7f, org.springframework.security.web.session.SessionManagementFilter@24f947b9, org.springframework.security.web.access.ExceptionTranslationFilter@63c2184c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2e4d40b3]
+2021-12-11 18:03:43.971  INFO 4331 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-12-11 18:03:44.062  INFO 4331 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-11 18:03:44.067  INFO 4331 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/TiendaAdmin'
+2021-12-11 18:03:44.070  INFO 4331 --- [restartedMain] c.t.admin.TiendaBackEndApplication       : Started TiendaBackEndApplication in 0.441 seconds (JVM running for 9.717)
+2021-12-11 18:03:44.071  INFO 4331 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-12-11 18:04:03.798  INFO 4331 --- [RMI TCP Connection(6)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-12-11 18:04:03.809  INFO 4331 --- [RMI TCP Connection(6)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-11 18:04:03.810  INFO 4331 --- [RMI TCP Connection(6)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2021-12-11 18:04:03.811  INFO 4331 --- [RMI TCP Connection(6)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2021-12-11 18:04:05.109  INFO 4376 --- [restartedMain] c.t.admin.TiendaBackEndApplication       : Starting TiendaBackEndApplication using Java 16.0.2 on iMac-Grande.local with PID 4376 (/Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd/target/classes started by nachogonzalez in /Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd)
+2021-12-11 18:04:05.110  INFO 4376 --- [restartedMain] c.t.admin.TiendaBackEndApplication       : No active profile set, falling back to default profiles: default
+2021-12-11 18:04:05.133  INFO 4376 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-11 18:04:05.133  INFO 4376 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-11 18:04:05.469  INFO 4376 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-11 18:04:05.497  INFO 4376 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 2 JPA repository interfaces.
+2021-12-11 18:04:05.787  INFO 4376 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-11 18:04:05.792  INFO 4376 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-11 18:04:05.792  INFO 4376 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-11 18:04:05.838  INFO 4376 --- [restartedMain] o.a.c.c.C.[.[localhost].[/TiendaAdmin]   : Initializing Spring embedded WebApplicationContext
+2021-12-11 18:04:05.838  INFO 4376 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 704 ms
+2021-12-11 18:04:05.934  INFO 4376 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-11 18:04:05.959  INFO 4376 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-11 18:04:06.026  INFO 4376 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-11 18:04:06.078  INFO 4376 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-11 18:04:06.272  INFO 4376 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-11 18:04:06.281  INFO 4376 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-11 18:04:06.640  INFO 4376 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-11 18:04:06.645  INFO 4376 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-11 18:04:06.675  WARN 4376 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-11 18:04:06.972  INFO 4376 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/images/**'] with []
+2021-12-11 18:04:06.973  INFO 4376 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-12-11 18:04:06.973  INFO 4376 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**'] with []
+2021-12-11 18:04:06.989  INFO 4376 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@390bf379, org.springframework.security.web.context.SecurityContextPersistenceFilter@66a0bbc3, org.springframework.security.web.header.HeaderWriterFilter@4c039a9a, org.springframework.security.web.csrf.CsrfFilter@708c27be, org.springframework.security.web.authentication.logout.LogoutFilter@59274167, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@16a796ef, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e2679a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3b9c1695, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@55068400, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@34f248ab, org.springframework.security.web.session.SessionManagementFilter@3f7506bd, org.springframework.security.web.access.ExceptionTranslationFilter@10627fae, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2ef0f33c]
+2021-12-11 18:04:07.086  INFO 4376 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-12-11 18:04:07.291  INFO 4376 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-11 18:04:07.313  INFO 4376 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/TiendaAdmin'
+2021-12-11 18:04:07.319  INFO 4376 --- [restartedMain] c.t.admin.TiendaBackEndApplication       : Started TiendaBackEndApplication in 2.398 seconds (JVM running for 2.844)
+2021-12-11 18:06:22.925  INFO 4376 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-11 18:06:22.926  INFO 4376 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-12-11 18:06:22.930  INFO 4376 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-12-11 18:06:23.144  INFO 4376 --- [restartedMain] c.t.admin.TiendaBackEndApplication       : Starting TiendaBackEndApplication using Java 16.0.2 on iMac-Grande.local with PID 4376 (/Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd/target/classes started by nachogonzalez in /Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd)
+2021-12-11 18:06:23.144  INFO 4376 --- [restartedMain] c.t.admin.TiendaBackEndApplication       : No active profile set, falling back to default profiles: default
+2021-12-11 18:06:23.226  INFO 4376 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-11 18:06:23.233  INFO 4376 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 2 JPA repository interfaces.
+2021-12-11 18:06:23.284  INFO 4376 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-11 18:06:23.284  INFO 4376 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-11 18:06:23.284  INFO 4376 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-11 18:06:23.292  INFO 4376 --- [restartedMain] o.a.c.c.C.[.[localhost].[/TiendaAdmin]   : Initializing Spring embedded WebApplicationContext
+2021-12-11 18:06:23.292  INFO 4376 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 146 ms
+2021-12-11 18:06:23.311  INFO 4376 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-11 18:06:23.314  INFO 4376 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2021-12-11 18:06:23.324  INFO 4376 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2021-12-11 18:06:23.324  INFO 4376 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-11 18:06:23.361  INFO 4376 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-11 18:06:23.361  INFO 4376 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-11 18:06:23.373  WARN 4376 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-11 18:06:23.421  INFO 4376 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/images/**'] with []
+2021-12-11 18:06:23.421  INFO 4376 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-12-11 18:06:23.421  INFO 4376 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**'] with []
+2021-12-11 18:06:23.425  INFO 4376 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6978c67c, org.springframework.security.web.context.SecurityContextPersistenceFilter@440caf14, org.springframework.security.web.header.HeaderWriterFilter@7157ab60, org.springframework.security.web.csrf.CsrfFilter@109f2587, org.springframework.security.web.authentication.logout.LogoutFilter@5d99cafc, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6bd5f0b3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2d66d32d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6126714a, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@206070f8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1e0777f8, org.springframework.security.web.session.SessionManagementFilter@2d561424, org.springframework.security.web.access.ExceptionTranslationFilter@17d0fcf, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@31e8dc0f]
+2021-12-11 18:06:23.451  INFO 4376 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-12-11 18:06:23.542  INFO 4376 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-11 18:06:23.548  INFO 4376 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/TiendaAdmin'
+2021-12-11 18:06:23.551  INFO 4376 --- [restartedMain] c.t.admin.TiendaBackEndApplication       : Started TiendaBackEndApplication in 0.557 seconds (JVM running for 139.08)
+2021-12-11 18:06:23.552  INFO 4376 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-12-11 18:06:48.459  INFO 4376 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/TiendaAdmin]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-11 18:06:48.459  INFO 4376 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-11 18:06:48.460  INFO 4376 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-12-11 18:07:39.653  INFO 4376 --- [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-11 18:07:39.654  INFO 4376 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2021-12-11 18:07:39.655  INFO 4376 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
