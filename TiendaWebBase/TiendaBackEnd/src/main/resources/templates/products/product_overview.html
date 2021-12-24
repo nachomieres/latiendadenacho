@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="content" th:remove="tag">
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Nombre: </label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" th:field="*{name}" required
+					minlength="3" maxlength="256" />
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Alias: </label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" th:field="*{alias}" required
+					placeholder="Por defecto es el nombre del producto (espacios reemplazados con -)"
+					minlength="3" maxlength="256" />
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Marca: </label>
+			<div class="col-sm-10">
+				<select th:field="*{brand}" class="form-control" required>
+					<th:block th:each="brand : ${listBrands}">
+						<option th:value="${brand.id}">[[${brand.name}]]</option>
+					</th:block>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Categoria: </label>
+			<div class="col-sm-10">
+				<select th:field="*{category}" class="form-control" required>
+
+				</select>
+			</div>
+		</div>
+
+
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Activo: </label>
+			<div class="col-sm-10">
+				<input type="checkbox" th:field="*{enabled}" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">En Stock:</label>
+			<div class="col-sm-10">
+				<input type="checkbox" th:field="*{inStock}" />
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Coste:</label>
+			<div class="col-sm-10">
+				<input type="number" class="form-control" th:field="*{cost}" />
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Precio:</label>
+			<div class="col-sm-10">
+				<input type="number" class="form-control" th:field="*{price}" />
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Descuento:</label>
+			<div class="col-sm-10">
+				<input type="number" class="form-control"
+					th:field="*{discountPercent}" />
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

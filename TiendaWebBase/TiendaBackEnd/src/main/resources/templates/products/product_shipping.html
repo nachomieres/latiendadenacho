@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="content" th:remove="tag">
+		<div class="form-group row m-2">
+			La siguiente informacion es importante para calcular los gastos de envio del producto.</br>
+			Las dimensiones (L x A x A) son de la caja usada para embalar el producto, no del producto en si.
+		</div>
+		
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Largo (cm):</label>
+			<div class="col-sm-10">
+				<input type="number" step="1" class="form-control" th:field="*{length}" />
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Ancho (cm):</label>
+			<div class="col-sm-10">
+				<input type="number" step="1" class="form-control" th:field="*{width}" />
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Alto (cm):</label>
+			<div class="col-sm-10">
+				<input type="number" step="1" class="form-control" th:field="*{height}" />
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Peso (Kg):</label>
+			<div class="col-sm-10">
+				<input type="number" class="form-control" th:field="*{weight}" />
+			</div>
+		</div>
+		
+	</div>
+
+</body>
+</html>
