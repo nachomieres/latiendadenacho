@@ -14,6 +14,10 @@ import com.tiendadenacho.entidades.User;
 
 public class TiendaUserDetails implements UserDetails {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private User user;
 	
 	public TiendaUserDetails(User user) {
@@ -72,6 +76,10 @@ public class TiendaUserDetails implements UserDetails {
 	
 	public void setApellidos (String apellidos) {
 		this.user.setApellidos(apellidos);
+	}
+	
+	public boolean hasRole(String roleName) {
+		return user.hasRole(roleName);
 	}
 	
 }

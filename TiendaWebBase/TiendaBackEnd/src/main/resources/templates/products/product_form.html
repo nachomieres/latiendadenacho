@@ -15,7 +15,11 @@
 		</div>
 
 		<form th:action="@{/products/save}" method="post" onsubmit="return checkUnique(this)"
-			th:object="${product}">
+				enctype="multipart/form-data"
+				th:object="${product}">
+			<input type="hidden" th:field="*{id}" />
+			<input th:if="${product.category != null}" type="hidden" 
+				id="categoryId" th:value="${product.category.id}" />
 			<div>
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -36,12 +40,43 @@
 						<div th:replace="products/product_overview :: content"></div>
 					</div>
 					<div class="tab-pane  p-3" id="description" role="tabpanel">
-						<div th:replace="products/product_description :: content"></div>
+						<th:block sec:authorize="hasAuthority('Gestor')">
+		  					<div th:replace="products/product_description_read_only :: content"></div>
+		  				</th:block>		  	
+		  			<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+		  				<div th:replace="products/product_description :: content"></div>
+		  			</th:block>
 					</div>
-					<div class="tab-pane  p-3" id="images" role="tabpanel">Imagenes</div>
-					<div class="tab-pane  p-3" id="details" role="tabpanel">Detalles</div>
+					
+					<div class="tab-pane  p-3" id="images" role="tabpanel">
+						<th:block sec:authorize="hasAuthority('Gestor')">
+		  					<div th:replace="products/product_images_read_only :: content"></div>
+		  				</th:block>		  		  
+				  	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+					  	<div th:replace="products/product_images :: content"></div>
+		  			</th:block>
+					</div>
+					
+					<div class="tab-pane  p-3" id="details" role="tabpanel">
+						<th:block sec:authorize="hasAuthority('Gestor')">
+		  					<div th:replace="products/product_details_read_only :: content"></div>
+		  				</th:block>
+	  					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+							<div th:replace="products/product_details :: content"></div>
+							<div>
+								<input type="button" class="btn btn-secondary" value="Añadir mas detalles" 
+									onclick="addNextDetailSection()"/>
+							</div>
+						</th:block>
+					</div>
+					
 					<div class="tab-pane  p-3" id="shipping" role="tabpanel">
-						<div th:replace="products/product_shipping :: content"></div>
+						<th:block sec:authorize="hasAuthority('Gestor')">
+							<div th:replace="products/product_shipping_read_only :: content"></div>
+						</th:block>
+						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+							<div th:replace="products/product_shipping :: content"></div>
+						</th:block>
 					</div>
 				</div>
 			</div>
@@ -58,63 +93,17 @@
 		<div th:replace="fragments :: footer"></div>
 	</div>
 	<script type="text/javascript">
+		MAX_FILE_SIZE = 1002400; // 1000 Kb
 		moduleURL = "[[@{/products}]]";
 		brandModuleURL = "[[@{/brands}]]";
+		defaultImageThumbnailSrc = "[[@{/images/image-thumbnail.png}]]";
+		checkUniqueUrl = "[[@{/products/check_unique}]]";
 
-		dropdownBrands = $("#brand");
-		dropdownCategories = $("#category");
-
-		$(document).ready(function() {
-			$("#shortDescription").richText();
-			$("#fullDescription").richText();
-			
-			dropdownBrands.change(function() {
-				dropdownCategories.empty();
-				getCategories();
-			});
-
-			getCategories();
-		});
-
-		function getCategories() {
-			brandId = dropdownBrands.val();
-			url = brandModuleURL + "/" + brandId + "/categories";
-
-			$.get(url, function(responseJson) {
-				$.each(responseJson, function(index, category) {
-					$("<option>").val(category.id).text(category.name)
-							.appendTo(dropdownCategories);
-				});
-			});
-		}
-		
-		function checkUnique(form) {
-			productId = $("#id").val();
-			productName = $("#name").val();
-			
-			csrfValue = $("input[name='_csrf']").val();
-			
-			url = "[[@{/products/check_unique}]]";
-			
-			params = {id: productId, name: productName, _csrf: csrfValue};
-			
-			$.post(url, params, function(response) {
-				if (response == "OK") {
-					form.submit();
-				} else if (response == "Duplicate") {
-					showWarningModal("Hay otro producto con el nombre:  " + productName);	
-				} else {
-					showErrorModal("Respuesta desconocida del servidor");
-				}
-				
-			}).fail(function() {
-				showErrorModal("No se puede conectar con el servidor");
-			});
-			
-			return false;
-		}
 	</script>
 	<script th:src="@{/js/common_form.js}"></script>
+	<script th:src="@{/js/product_form_overview.js}"></script>
+	<script th:src="@{/js/product_form_images.js}"></script>
+	<script th:src="@{/js/product_form_details.js}"></script>
 </body>
 
 </html>
