@@ -45,8 +45,8 @@
 			<div th:id="'extraImageHeader' + ${numberOfExistingImages}">
 				<label>Imagen extra #[[${numberOfExistingExtraImages + 1}]]:</label></div>
 			<div class="m-2">
-				<img th:id="'extraThumbnail' + ${numberOfExistingImages}" 
-					th:alt="'Extra image #'+ ${numberOfExistingImages} + ' preview'" class="img-fluid"
+				<img th:id="'extraThumbnail' + ${numberOfExistingExtraImages}" 
+					th:alt="'Extra image #'+ ${numberOfExistingExtraImages} + ' preview'" class="img-fluid"
 					th:src="@{/images/image-thumbnail.png}"/>
 			</div>
 			<div>

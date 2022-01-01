@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.tiendadenacho.entidades.Product;
+import com.tiendadenacho.exception.ProductNotFoundException;
 
 @Service
 public class ProductService {

@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.tiendadenacho.entidades.Category;
+import com.tiendadenacho.exception.CategoryNotFoundException;
 
 @Service
 @Transactional

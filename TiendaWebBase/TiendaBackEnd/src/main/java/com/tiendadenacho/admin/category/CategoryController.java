@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tiendadenacho.admin.FileUploadUtil;
 import com.tiendadenacho.entidades.Category;
+import com.tiendadenacho.exception.CategoryNotFoundException;
 
 @Controller
 public class CategoryController {
