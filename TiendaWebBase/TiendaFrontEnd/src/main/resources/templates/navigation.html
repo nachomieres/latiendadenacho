@@ -5,7 +5,7 @@
 <div th:fragment="header_menu">
 	<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
 		<a class="navbar-brand" th:href="@{/}">
-			<img th:src="@{/images/LogoTienda.png}" />
+			<img th:src="@{${SITE_LOGO}}" />
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavbar, #searchNavbar">
 			<span class="navbar-toggler-icon"> </span>
@@ -25,7 +25,7 @@
 					<a class="nav-link" href="">Login</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="">Registro</a>
+					<a class="nav-link" th:href="@{/register}">Registro</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="">Contacto</a>
@@ -70,9 +70,9 @@
 			</div>		
 		</nav>
 	</div>
-</div>
-<div th:fragment="footer" class="text-center">
-	<p>La Tienda de Nacho - Copyright &copy; Nacho</p>
+	<div th:fragment="footer" class="text-center">
+		<p>[[${COPYRIGHT}]]</p>
+	</div>
 </div>
 </body>
 </html>
