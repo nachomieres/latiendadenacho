@@ -14,7 +14,7 @@
 
 		</div>
 
-		<div th:replace="fragments :: search_form_and_message ('/categories/page/1')"></div>
+		<div th:replace="fragments :: search_form_and_message"></div>
 
 		<div class="full-details">
 			<table
@@ -24,7 +24,7 @@
 						<th>ID</th>
 						<th>Imagen</th>
 						<th
-							th:replace="fragments :: column_link('/categories', 'name', 'Nombre', 'none')" />
+							th:replace="fragments :: column_link('name', 'Nombre', 'none')" />
 						<th class="hideable-column">Alias</th>
 						<th>Activo</th>
 						<th></th>
@@ -79,12 +79,12 @@
 		<div th:if="${keyword != null}" class="text-center">
 			<span>No se muestran resultados en modo jerarquico</span>
 			<div
-				th:replace="fragments :: pagination ('/categories', 'categorias')"></div>
+				th:replace="fragments :: pagination ('categorias')"></div>
 		</div>
 
 		<th:block th:unless="${keyword != null}">
 			<div
-				th:replace="fragments :: pagination ('/categories', 'categorias raiz')"></div>
+				th:replace="fragments :: pagination ('categorias raiz')"></div>
 	</div>
 
 	<div th:replace="modal_fragments :: confirm_modal"></div>

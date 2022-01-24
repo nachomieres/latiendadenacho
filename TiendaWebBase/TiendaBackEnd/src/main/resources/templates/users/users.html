@@ -15,7 +15,7 @@
 	</div>
 <!-- 	<div th:if="${message != null}"	class="alert alert-success text-center">[[${message}]]</div> -->
 
-	<div th:replace="fragments :: search_form_and_message ('/users/page/1')"></div>
+	<div th:replace="fragments :: search_form_and_message"></div>
 
 	<div class="full-details">
 		<table
@@ -23,16 +23,16 @@
 			<thead class="thead-dark">
 				<tr>
 					<th class="hideable-column">
-						<th th:replace="fragments :: column_link('/users/', 'id', 'ID', 'tag')">
+						<th th:replace="fragments :: column_link('id', 'ID', 'tag')">
 					</th>
 					<th>Foto</th>
-					<th th:replace="fragments :: column_link('/users/', 'nombre', 'Nombre', 'none')" />
-					<th th:replace="fragments :: column_link('/users/', 'apellidos', 'Apellidos', 'none')" />
+					<th th:replace="fragments :: column_link('nombre', 'Nombre', 'none')" />
+					<th th:replace="fragments :: column_link('apellidos', 'Apellidos', 'none')" />
 					<th class="hideable-column">
-						<th th:replace="fragments :: column_link('/users/', 'email', 'E-mail', 'tag')">
+						<th th:replace="fragments :: column_link('email', 'E-mail', 'tag')">
 					</th>
 					<th>Roles</th>
-					<th th:replace="fragments :: column_link('/users/', 'enabled', 'Activo', 'none')" />
+					<th th:replace="fragments :: column_link('enabled', 'Activo', 'none')" />
 					<th></th>
 				</tr>
 			</thead>
@@ -75,7 +75,7 @@
 	</div>
 </div>
 
-<div th:replace="fragments :: pagination ('/users', 'usuarios')"></div>
+<div th:replace="fragments :: pagination ('usuarios')"></div>
 
 <div th:replace="modal_fragments :: confirm_modal"></div>
 

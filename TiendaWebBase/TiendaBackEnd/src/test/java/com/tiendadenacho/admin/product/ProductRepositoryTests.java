@@ -19,10 +19,10 @@ import com.tiendadenacho.entidades.Product;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
-public class ProductRepositotyTests {
+public class ProductRepositoryTests {
 
 	@Autowired
-	private ProductRepositoty repo;
+	private ProductRepository repo;
 	
 	@Autowired
 	private TestEntityManager entityManager;
