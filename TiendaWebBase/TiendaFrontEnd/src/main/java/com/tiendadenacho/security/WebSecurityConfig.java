@@ -1,5 +1,6 @@
 package com.tiendadenacho.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -11,9 +12,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.tiendadenacho.security.oauth.CustomerOauth2UserService;
+import com.tiendadenacho.security.oauth.DatabaseLoginSuccessHandler;
+import com.tiendadenacho.security.oauth.Oauth2LoginSuccessHandler;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Autowired private CustomerOauth2UserService oauth2UserService;
+	@Autowired private Oauth2LoginSuccessHandler oauth2LoginSuccessHandler;
+	@Autowired private DatabaseLoginSuccessHandler databaseLoginSuccessHandler;
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -29,7 +38,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.formLogin()
 			.loginPage("/login")
 			.usernameParameter("email")
+			.successHandler(databaseLoginSuccessHandler)
 			.permitAll()
+		.and()
+		.oauth2Login()
+			.loginPage("/login")
+			.userInfoEndpoint()
+			.userService(oauth2UserService)
+			.and()
+			.successHandler(oauth2LoginSuccessHandler)
 		.and()
 		.logout().permitAll()
 		.and()

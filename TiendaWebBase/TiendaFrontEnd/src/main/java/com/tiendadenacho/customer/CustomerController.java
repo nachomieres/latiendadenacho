@@ -87,4 +87,6 @@ public class CustomerController {
 		
 		return "register/" + (verified ? "verify_success" : "verify_fail");
 	}
+	
+	
 }

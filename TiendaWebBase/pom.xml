@@ -15,7 +15,7 @@
 	<name>TiendaWebBase</name>
 	<description>Base en comun de la aplicacion Web</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>15</java.version>
 	</properties>
 	
 	<modules>

@@ -1,0 +1,28 @@
+server:
+  port: 80
+  servlet:
+    context-path: /Tienda
+spring:
+  datasource:
+    password: temporal
+    url: jdbc:mysql://localhost:3306/proyecto
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    show-sql: false
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 963858418862-5b5d3fi62kfkfghuvrmtfqsvg154deem.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+            - email
+            - profile

@@ -12,7 +12,7 @@
 	<description>Administracion de la Tienda de Nacho</description>
 	
 	<properties>
-		<java.version>16</java.version>
+		<java.version>15</java.version>
 	</properties>
 	<dependencies>
 	<dependency>
