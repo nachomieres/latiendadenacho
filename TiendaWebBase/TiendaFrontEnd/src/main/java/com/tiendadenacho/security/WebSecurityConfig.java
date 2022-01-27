@@ -13,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.tiendadenacho.security.oauth.CustomerOauth2UserService;
-import com.tiendadenacho.security.oauth.DatabaseLoginSuccessHandler;
 import com.tiendadenacho.security.oauth.Oauth2LoginSuccessHandler;
 
 @Configuration
@@ -32,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers("/customer").authenticated()
+		.antMatchers("/account_details", "/update_account_details").authenticated()
 		.anyRequest().permitAll()
 		.and()
 		.formLogin()

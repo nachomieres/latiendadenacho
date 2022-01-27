@@ -1,4 +1,4 @@
-package com.tiendadenacho.security.oauth;
+package com.tiendadenacho.security;
 
 import java.io.IOException;
 
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 import com.tiendadenacho.customer.CustomerService;
 import com.tiendadenacho.entidades.AuthenticationType;
 import com.tiendadenacho.entidades.Customer;
-import com.tiendadenacho.security.CustomerUserDetails;
 
 @Component
 public class DatabaseLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {

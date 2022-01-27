@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tiendadenacho.entidades.AuthenticationType;
 import com.tiendadenacho.entidades.Country;
 import com.tiendadenacho.entidades.Customer;
+import com.tiendadenacho.exception.CustomerNotFoundException;
 import com.tiendadenacho.settings.CountryRepository;
 
 import net.bytebuddy.utility.RandomString;
@@ -104,4 +105,58 @@ public class CustomerService {
 			customer.setLastName(lastName);
 		}
 	}
+	
+	public void update(Customer customerInForm) {
+		Customer customerInDB = customerRepo.findById(customerInForm.getId()).get();
+		
+		if (customerInDB.getAuthenticationType().equals(AuthenticationType.DATABASE)) {
+			if (!customerInForm.getPassword().isEmpty()) {
+				String encodedPassword = passwordEncoder.encode(customerInForm.getPassword());
+				customerInForm.setPassword(encodedPassword);			
+			} else {
+				customerInForm.setPassword(customerInDB.getPassword());
+			}		
+		} else {
+			customerInForm.setPassword(customerInDB.getPassword());
+		}
+		
+		customerInForm.setEnabled(customerInDB.isEnabled());
+		customerInForm.setCreatedTime(customerInDB.getCreatedTime());
+		customerInForm.setVerificationCode(customerInDB.getVerificationCode());
+		customerInForm.setAuthenticationType(customerInDB.getAuthenticationType());
+		customerInForm.setResetPasswordToken(customerInDB.getResetPasswordToken());
+		
+		customerRepo.save(customerInForm);
+	}	
+	
+	public String updateResetPasswordToken(String email) throws CustomerNotFoundException {
+		Customer customer = customerRepo.findByEmail(email);
+		if (customer != null) {
+			String token = RandomString.make(30);
+			customer.setResetPasswordToken(token);
+			customerRepo.save(customer);
+			
+			return token;
+		} else {
+			throw new CustomerNotFoundException("No se encuentra ningun cliente con el email " + email);
+		}
+	}
+	
+	public Customer getByResetPasswordToken(String token) {
+		return customerRepo.findByResetPasswordToken(token);
+	}
+	
+	public void updatePassword(String token, String newPassword) throws CustomerNotFoundException {
+		Customer customer = customerRepo.findByResetPasswordToken(token);
+		if (customer == null) {
+			throw new CustomerNotFoundException("No customer found: invalid token");
+		}
+		
+		customer.setPassword(newPassword);
+		customer.setResetPasswordToken(null);
+		encodePassword(customer);
+		
+		customerRepo.save(customer);
+	}
+	
 }

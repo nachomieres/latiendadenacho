@@ -143,11 +143,20 @@ public class ProductController {
 	
 	@GetMapping ("/products/edit/{id}")
 	public String editProduct (@PathVariable ("id") Integer id, Model model,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes, @AuthenticationPrincipal TiendaUserDetails loggedUser) {
 		try {
 			Product product = productService.get(id);
 			List<Brand> listBrands = brandService.listAll();
 			Integer numberOfExistingImages = product.getImages().size();
+			
+			boolean isReadOnlyForGestor = false;
+			if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Editor")) {
+				if (loggedUser.hasRole("Gestor")) {
+					isReadOnlyForGestor = true;
+				}
+			}
+			
+			model.addAttribute("isReadOnlyForGestor", isReadOnlyForGestor);
 			
 			model.addAttribute("product", product);
 			model.addAttribute("pageTitle", "Editar producto (ID: " + id + ")");
