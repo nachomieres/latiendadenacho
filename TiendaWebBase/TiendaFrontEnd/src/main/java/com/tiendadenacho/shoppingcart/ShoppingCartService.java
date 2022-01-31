@@ -2,17 +2,22 @@ package com.tiendadenacho.shoppingcart;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tiendadenacho.entidades.CartItem;
 import com.tiendadenacho.entidades.Customer;
 import com.tiendadenacho.entidades.Product;
+import com.tiendadenacho.product.ProductRepository;
 
 @Service
+@Transactional
 public class ShoppingCartService {
 
 	@Autowired private CartItemRepository cartRepo;
+	@Autowired private ProductRepository productRepo;
 	
 	public Integer addProduct(Integer productId, Integer quantity, Customer customer) 
 			throws ShoppingCartException {
@@ -44,5 +49,16 @@ public class ShoppingCartService {
 	
 	public List<CartItem> listCartItems(Customer customer) {
 		return cartRepo.findByCustomer(customer);
+	}
+	
+	public float updateQuantity(Integer productId, Integer quantity, Customer customer) {
+		cartRepo.updateQuantity(quantity, customer.getId(), productId);
+		Product product = productRepo.findById(productId).get();
+		float subtotal = product.getDiscountPrice() * quantity;
+		return subtotal;
+	}
+	
+	public void removeProduct(Integer productId, Customer customer) {
+		cartRepo.deleteByCustomerAndProduct(customer.getId(), productId);
 	}
 }

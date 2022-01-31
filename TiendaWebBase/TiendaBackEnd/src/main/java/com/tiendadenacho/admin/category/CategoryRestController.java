@@ -11,7 +11,7 @@ public class CategoryRestController {
 	private CategoryService service;
 	
 	@PostMapping ("/categories/check_unique")
-	public String checkUnique (@Param ("id") Integer id, @Param ("name") String name,
+	public String checkUnique (Integer id, String name,
 			@Param ("alias") String alias) {
 		return service.checkUnique(id, name, alias);
 	}
