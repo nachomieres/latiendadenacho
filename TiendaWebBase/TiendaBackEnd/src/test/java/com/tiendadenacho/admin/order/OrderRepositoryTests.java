@@ -14,11 +14,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
 import com.tiendadenacho.entidades.Customer;
-import com.tiendadenacho.entidades.Order;
-import com.tiendadenacho.entidades.OrderDetail;
-import com.tiendadenacho.entidades.OrderStatus;
-import com.tiendadenacho.entidades.PaymentMethod;
-import com.tiendadenacho.entidades.Product;
+import com.tiendadenacho.entidades.order.Order;
+import com.tiendadenacho.entidades.order.OrderDetail;
+import com.tiendadenacho.entidades.order.OrderStatus;
+import com.tiendadenacho.entidades.order.PaymentMethod;
+import com.tiendadenacho.entidades.product.Product;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)

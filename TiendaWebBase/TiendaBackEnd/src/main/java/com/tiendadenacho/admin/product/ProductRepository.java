@@ -9,7 +9,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tiendadenacho.entidades.Product;
+import com.tiendadenacho.entidades.product.Product;
 
 @Transactional
 public interface ProductRepository extends PagingAndSortingRepository<Product, Integer> {

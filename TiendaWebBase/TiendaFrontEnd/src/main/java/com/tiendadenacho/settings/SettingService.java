@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tiendadenacho.entidades.Setting;
-import com.tiendadenacho.entidades.SettingCategory;
+import com.tiendadenacho.entidades.setting.Setting;
+import com.tiendadenacho.entidades.setting.SettingCategory;
 
 @Service
 public class SettingService {

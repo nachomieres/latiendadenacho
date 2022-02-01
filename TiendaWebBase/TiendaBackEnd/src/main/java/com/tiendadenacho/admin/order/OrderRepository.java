@@ -5,7 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 
 import com.tiendadenacho.admin.paging.SearchRepository;
-import com.tiendadenacho.entidades.Order;
+import com.tiendadenacho.entidades.order.Order;
 
 
 

@@ -9,8 +9,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
-import com.tiendadenacho.entidades.Setting;
-import com.tiendadenacho.entidades.SettingCategory;
+import com.tiendadenacho.entidades.setting.Setting;
+import com.tiendadenacho.entidades.setting.SettingCategory;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)

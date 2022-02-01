@@ -1,4 +1,4 @@
-package com.tiendadenacho.entidades;
+package com.tiendadenacho.entidades.setting;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

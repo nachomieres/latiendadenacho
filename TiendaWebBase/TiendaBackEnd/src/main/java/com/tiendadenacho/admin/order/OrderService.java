@@ -10,7 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.tiendadenacho.admin.paging.PagingAndSortingHelper;
-import com.tiendadenacho.entidades.Order;
+import com.tiendadenacho.entidades.order.Order;
 
 
 

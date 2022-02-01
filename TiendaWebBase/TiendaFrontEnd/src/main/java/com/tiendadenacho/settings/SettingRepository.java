@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.tiendadenacho.entidades.Setting;
-import com.tiendadenacho.entidades.SettingCategory;
+import com.tiendadenacho.entidades.setting.Setting;
+import com.tiendadenacho.entidades.setting.SettingCategory;
 
 public interface SettingRepository extends CrudRepository<Setting, String> {
 	

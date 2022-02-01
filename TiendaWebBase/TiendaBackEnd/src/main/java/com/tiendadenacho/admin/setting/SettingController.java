@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tiendadenacho.admin.FileUploadUtil;
 import com.tiendadenacho.entidades.Currency;
-import com.tiendadenacho.entidades.Setting;
+import com.tiendadenacho.entidades.setting.Setting;
 
 @Controller
 public class SettingController {

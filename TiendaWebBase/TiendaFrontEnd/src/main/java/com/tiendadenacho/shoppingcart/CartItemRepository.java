@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.tiendadenacho.entidades.CartItem;
 import com.tiendadenacho.entidades.Customer;
-import com.tiendadenacho.entidades.Product;
+import com.tiendadenacho.entidades.product.Product;
 
 public interface CartItemRepository extends CrudRepository<CartItem, Integer> {
 	public List<CartItem> findByCustomer(Customer customer);

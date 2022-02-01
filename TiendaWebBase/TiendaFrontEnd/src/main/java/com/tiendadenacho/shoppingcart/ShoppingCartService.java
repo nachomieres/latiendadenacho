@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.tiendadenacho.entidades.CartItem;
 import com.tiendadenacho.entidades.Customer;
-import com.tiendadenacho.entidades.Product;
+import com.tiendadenacho.entidades.product.Product;
 import com.tiendadenacho.product.ProductRepository;
 
 @Service

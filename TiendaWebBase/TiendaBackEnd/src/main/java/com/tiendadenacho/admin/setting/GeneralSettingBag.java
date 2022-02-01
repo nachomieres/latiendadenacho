@@ -2,8 +2,8 @@ package com.tiendadenacho.admin.setting;
 
 import java.util.List;
 
-import com.tiendadenacho.entidades.Setting;
-import com.tiendadenacho.entidades.SettingBag;
+import com.tiendadenacho.entidades.setting.Setting;
+import com.tiendadenacho.entidades.setting.SettingBag;
 
 public class GeneralSettingBag extends SettingBag {
 

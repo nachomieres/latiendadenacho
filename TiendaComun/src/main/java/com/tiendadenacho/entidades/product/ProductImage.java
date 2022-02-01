@@ -1,23 +1,18 @@
-package com.tiendadenacho.entidades;
+package com.tiendadenacho.entidades.product;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.tiendadenacho.entidades.IdBaseEntity;
+
 @Entity
 @Table(name = "product_images")
-public class ProductImage {
+public class ProductImage extends IdBaseEntity  {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
 	@Column(nullable = false)
 	private String name;
 	
@@ -39,14 +34,6 @@ public class ProductImage {
 		this.id = id;
 		this.name = name;
 		this.product = product;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getName() {

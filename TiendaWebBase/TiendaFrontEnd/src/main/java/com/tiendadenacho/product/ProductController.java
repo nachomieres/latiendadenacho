@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.tiendadenacho.category.CategoryService;
 import com.tiendadenacho.entidades.Category;
-import com.tiendadenacho.entidades.Product;
+import com.tiendadenacho.entidades.product.Product;
 import com.tiendadenacho.exception.CategoryNotFoundException;
 import com.tiendadenacho.exception.ProductNotFoundException;
 

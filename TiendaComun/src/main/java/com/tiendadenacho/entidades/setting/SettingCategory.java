@@ -1,4 +1,4 @@
-package com.tiendadenacho.entidades;
+package com.tiendadenacho.entidades.setting;
 
 public enum SettingCategory {
 	GENERAL, MAIL_SERVER, MAIL_TEMPLATES, CURRENCY, PAYMENT

@@ -13,8 +13,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tiendadenacho.admin.FileUploadUtil;
-import com.tiendadenacho.entidades.Product;
-import com.tiendadenacho.entidades.ProductImage;
+import com.tiendadenacho.entidades.product.Product;
+import com.tiendadenacho.entidades.product.ProductImage;
 
 public class ProductSaveHelper {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductSaveHelper.class);

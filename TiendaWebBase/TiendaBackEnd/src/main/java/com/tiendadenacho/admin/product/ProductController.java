@@ -23,7 +23,7 @@ import com.tiendadenacho.admin.paging.PagingAndSortingParam;
 import com.tiendadenacho.admin.security.TiendaUserDetails;
 import com.tiendadenacho.entidades.Brand;
 import com.tiendadenacho.entidades.Category;
-import com.tiendadenacho.entidades.Product;
+import com.tiendadenacho.entidades.product.Product;
 import com.tiendadenacho.exception.ProductNotFoundException;
 
 @Controller

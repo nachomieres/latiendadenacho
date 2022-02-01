@@ -14,8 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.tiendadenacho.admin.paging.PagingAndSortingHelper;
 import com.tiendadenacho.admin.paging.PagingAndSortingParam;
 import com.tiendadenacho.admin.setting.SettingService;
-import com.tiendadenacho.entidades.Order;
-import com.tiendadenacho.entidades.Setting;
+import com.tiendadenacho.entidades.order.Order;
+import com.tiendadenacho.entidades.setting.Setting;
 
 
 
