@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: page_head('Your Address Book', 'none')" />
+<head th:replace="fragments :: page_head('Mis direcciones', 'none')" />
 <body>
 <div class="container-fluid">
 	<div th:replace="navigation :: header_menu"></div>
 	<div th:replace="navigation :: search_nav"></div>
 	
 	<div class="text-center">
-		<div><h2>Your Address Book</h2></div>
+		<div><h2>Libreta de direcciones</h2></div>
 		<div>
-			<a th:href="@{/address_book/new}" class="h4">Add New Address</a>
+			<a th:href="@{/address_book/new}" class="h4">Añadir direccion</a>
 		</div>
 	</div>
 	
@@ -17,32 +17,34 @@
 		[[${message}]]
 	</div>	
 		
-	<div class="row m-1">
+	<div class="row" style="margin: auto; width: 980px">
 		<div class="col-sm-6 mt-2">
 			<div class="card" th:classappend="${usePrimaryAddressAsDefault ? 'bg-warning' : ''}">
 				<div class="card-header">
 					<div class="row">
 						<div class="col">
-							<b>Your Primary Address</b>
+							<b>Direccion Principal</b>
 							
 							<th:block th:if="${usePrimaryAddressAsDefault}">
-							<span class="text-danger">[Default]</span>
+							<span class="text-danger">[Predeterminada]</span>
 							</th:block>
 							
 							<th:block th:unless="${usePrimaryAddressAsDefault}">
-							<a th:href="@{'/address_book/default/0'}">[Set as default]</a>
+							<a th:href="@{'/address_book/default/0'}">[Definir como predeterminada]</a>
 							</th:block>							
 						</div>
 						<div class="col">
 							<div class="float-right">
-								<a class="fas fa-edit icon-dark" title="Edit your primary address"
+								<a class="fas fa-edit icon-dark" title="Editar direccion"
 									th:href="@{/account_details(redirect=address_book)}"></a>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="card-body">
-					[[${customer.address}]]
+					<p><b>[[${customer.firstName}]] [[${customer.lastName}]]</b></p>
+					<p>[[${customer.addressLine1}]]</p>
+					 
 				</div>
 			</div>
 		</div>
@@ -56,20 +58,20 @@
 							<b>Address #[[${status.count + 1}]]</b>
 							
 							<th:block th:if="${address.defaultForShipping}">
-							<span class="text-danger">[Default]</span>
+							<span class="text-danger">[Predeterminada]</span>
 							</th:block>
 							
 							<th:block th:unless="${address.defaultForShipping}">
-							<a th:href="@{'/address_book/default/' + ${address.id}}">[Set as default]</a>
+							<a th:href="@{'/address_book/default/' + ${address.id}}">[Definir como predeterminada]</a>
 							</th:block>
 														
 						</div>
 						<div class="col">
 							<div class="float-right">
-								<a class="fas fa-edit icon-dark" title="Edit this address"
+								<a class="fas fa-edit icon-dark" title="Editar direccion"
 									th:href="@{'/address_book/edit/' + ${address.id}}"></a>
 								&nbsp;
-								<a class="fas fa-trash icon-dark linkDelete" title="Delete this address"
+								<a class="fas fa-trash icon-dark linkDelete" title="Borrar direccion"
 									th:entityId="${address.id}"
 									th:href="@{'/address_book/delete/' + ${address.id}}"></a>									
 							</div>
@@ -99,8 +101,7 @@
 		entityId = link.attr("entityId");
 		
 		$("#yesButton").attr("href", link.attr("href"));	
-		$("#confirmText").text("Are you sure you want to delete this "
-								 + entityName + " ID " + entityId + "?");
+		$("#confirmText").text("Estas seguro de querer borrar la direccion con ID " + entityId + "?");
 		$("#confirmModal").modal();	
 	}	
 </script>
