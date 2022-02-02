@@ -8,7 +8,6 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.authentication.RememberMeAuthenticationToken;
@@ -120,6 +119,8 @@ public class CustomerController {
 		
 		if ("address_book".equals(redirectOption)) {
 			redirectURL = "redirect:/address_book";
+		} else if ("cart".equals(redirectOption)) {
+			redirectURL = "redirect:/cart";
 		}
 		
 		return redirectURL;

@@ -9,6 +9,16 @@
             "mainClass": "com.tiendadenacho.admin.TiendaBackEndApplication",
             "projectName": "TiendaBackEnd",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-TiendaFrontEndApplication<TiendaFrontEnd>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.tiendadenacho.TiendaFrontEndApplication",
+            "projectName": "TiendaFrontEnd",
+            "args": ""
         }
     ]
 }

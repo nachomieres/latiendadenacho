@@ -17,21 +17,21 @@
 		[[${message}]]
 	</div>	
 		
-	<div class="row" style="margin: auto; width: 980px">
+	<div class="row">
 		<div class="col-sm-6 mt-2">
 			<div class="card" th:classappend="${usePrimaryAddressAsDefault ? 'bg-warning' : ''}">
 				<div class="card-header">
 					<div class="row">
 						<div class="col">
-							<b>Direccion Principal</b>
-							
+							<b>Principal</b>						
 							<th:block th:if="${usePrimaryAddressAsDefault}">
-							<span class="text-danger">[Predeterminada]</span>
+							<span class="text-danger">[En uso]</span>
 							</th:block>
 							
 							<th:block th:unless="${usePrimaryAddressAsDefault}">
-							<a th:href="@{'/address_book/default/0'}">[Definir como predeterminada]</a>
-							</th:block>							
+							<a th:unless="${param.redirect}" th:href="@{'/address_book/default/0'}">[Usar esta]</a>
+							<a th:if="${param.redirect}" th:href="@{'/address_book/default/0?redirect=' + ${param.redirect}}">[Usar esta]</a>
+							</th:block>						
 						</div>
 						<div class="col">
 							<div class="float-right">
@@ -42,9 +42,14 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<p><b>[[${customer.firstName}]] [[${customer.lastName}]]</b></p>
-					<p>[[${customer.addressLine1}]]</p>
-					 
+					<b>[[${customer.firstName}]] [[${customer.lastName}]]</b><br>
+					[[${customer.addressLine1}]]<br>
+					<th:block th:if="${customer.addressLine2 != ''}">
+						[[${customer.addressLine2}]]<br>
+					</th:block>	
+					[[${customer.city}]] - [[${customer.postalCode}]]<br>
+					[[${customer.state}]]<br>
+					[[${customer.country.name}]]<br>										 
 				</div>
 			</div>
 		</div>
@@ -55,14 +60,14 @@
 				<div class="card-header">
 					<div class="row">
 						<div class="col">
-							<b>Address #[[${status.count + 1}]]</b>
-							
+							<b>Direccion #[[${status.count + 1}]]</b>							
 							<th:block th:if="${address.defaultForShipping}">
-							<span class="text-danger">[Predeterminada]</span>
+							<span class="text-danger">[En uso]</span>
 							</th:block>
 							
 							<th:block th:unless="${address.defaultForShipping}">
-							<a th:href="@{'/address_book/default/' + ${address.id}}">[Definir como predeterminada]</a>
+							<a th:unless="${param.redirect}" th:href="@{'/address_book/default/' + ${address.id}}">[Usar esta]</a>
+							<a th:if="${param.redirect}" th:href="@{'/address_book/default/' + ${address.id} + '?redirect=' + ${param.redirect}}">[Usar esta]</a>
 							</th:block>
 														
 						</div>
@@ -79,7 +84,14 @@
 					</div>
 				</div>
 				<div class="card-body">
-					[[${address}]]
+					<b>[[${address.firstName}]] [[${address.lastName}]]</b><br>
+					[[${address.addressLine1}]]<br>
+					<th:block th:if="${address.addressLine2 != ''}">
+						[[${address.addressLine2}]]<br>
+					</th:block>					
+					[[${address.city}]] - [[${address.postalCode}]]<br>
+					[[${address.state}]]<br>
+					[[${address.country.name}]]<br>
 				</div>
 			</div>
 		</div>		

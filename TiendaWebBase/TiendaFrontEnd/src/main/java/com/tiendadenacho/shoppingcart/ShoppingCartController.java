@@ -10,15 +10,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.tiendadenacho.Utility;
+import com.tiendadenacho.address.AddressService;
 import com.tiendadenacho.customer.CustomerService;
+import com.tiendadenacho.entidades.Address;
 import com.tiendadenacho.entidades.CartItem;
 import com.tiendadenacho.entidades.Customer;
+import com.tiendadenacho.entidades.ShippingRate;
+import com.tiendadenacho.shipping.ShippingRateService;
 
 @Controller
 public class ShoppingCartController {
 	@Autowired private CustomerService customerService;
 	@Autowired private ShoppingCartService cartService;
-	
+	@Autowired private AddressService addressService;
+	@Autowired private ShippingRateService shipService;
+		
 	@GetMapping("/cart")
 	public String viewCart(Model model, HttpServletRequest request) {
 		Customer customer = getAuthenticatedCustomer(request);
@@ -30,8 +36,22 @@ public class ShoppingCartController {
 			estimatedTotal += item.getSubtotal();
 		}
 		
+		Address defaultAddress = addressService.getDefaultAddress(customer);
+		ShippingRate shippingRate = null;
+		boolean usePrimaryAddressAsDefault = false;
+		
+		if (defaultAddress != null) {
+			shippingRate = shipService.getShippingRateForAddress(defaultAddress);
+		} else {
+			usePrimaryAddressAsDefault = true;
+			shippingRate = shipService.getShippingRateForCustomer(customer);
+		}
+		
+		model.addAttribute("usePrimaryAddressAsDefault", usePrimaryAddressAsDefault);
+		model.addAttribute("shippingSupported", shippingRate != null);
 		model.addAttribute("cartItems", cartItems);
 		model.addAttribute("estimatedTotal", estimatedTotal);
+		model.addAttribute("customer", customer);
 		
 		return "cart/shopping_cart";
 	}
