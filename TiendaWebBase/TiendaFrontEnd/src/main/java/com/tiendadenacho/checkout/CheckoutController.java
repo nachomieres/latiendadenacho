@@ -1,10 +1,17 @@
 package com.tiendadenacho.checkout;
 
+import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +24,12 @@ import com.tiendadenacho.entidades.Address;
 import com.tiendadenacho.entidades.CartItem;
 import com.tiendadenacho.entidades.Customer;
 import com.tiendadenacho.entidades.ShippingRate;
+import com.tiendadenacho.entidades.order.Order;
 import com.tiendadenacho.entidades.order.PaymentMethod;
 import com.tiendadenacho.order.OrderService;
+import com.tiendadenacho.settings.CurrencySettingBag;
+import com.tiendadenacho.settings.EmailSettingBag;
+import com.tiendadenacho.settings.SettingService;
 import com.tiendadenacho.shipping.ShippingRateService;
 import com.tiendadenacho.shoppingcart.ShoppingCartService;
 
@@ -31,6 +42,7 @@ public class CheckoutController {
 	@Autowired private ShippingRateService shipService;
 	@Autowired private ShoppingCartService cartService;
 	@Autowired private OrderService orderService;
+	@Autowired private SettingService settingService;
 	
 	@GetMapping("/checkout")
 	public String showCheckoutPage(Model model, HttpServletRequest request) {
@@ -66,7 +78,8 @@ public class CheckoutController {
 	}	
 	
 	@PostMapping("/place_order")
-	public String placeOrder(HttpServletRequest request) {
+	public String placeOrder(HttpServletRequest request) 
+			throws UnsupportedEncodingException, MessagingException {
 		String paymentType = request.getParameter("paymentMethod");
 		PaymentMethod paymentMethod = PaymentMethod.valueOf(paymentType);
 		
@@ -84,9 +97,47 @@ public class CheckoutController {
 		List<CartItem> cartItems = cartService.listCartItems(customer);
 		CheckoutInfo checkoutInfo = checkoutService.prepareCheckout(cartItems, shippingRate);
 		
-		orderService.createOrder(customer, defaultAddress, cartItems, paymentMethod, checkoutInfo);
+		Order createdOrder = orderService.createOrder(customer, defaultAddress, cartItems, paymentMethod, checkoutInfo);
 		cartService.deleteByCustomer(customer);
+		sendOrderConfirmationEmail(request, createdOrder);
+		
 		
 		return "checkout/order_completed";
+	}
+	
+	private void sendOrderConfirmationEmail(HttpServletRequest request, Order order) 
+			throws UnsupportedEncodingException, MessagingException {
+		EmailSettingBag emailSettings = settingService.getEmailSettings();
+		JavaMailSenderImpl mailSender = Utility.prepareMailSender(emailSettings);
+		mailSender.setDefaultEncoding("utf-8");
+		
+		String toAddress = order.getCustomer().getEmail();
+		String subject = emailSettings.getOrderConfirmationSubject();
+		String content = emailSettings.getOrderConfirmationContent();
+		
+		subject = subject.replace("[[orderId]]", String.valueOf(order.getId()));
+		
+		MimeMessage message = mailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message);
+		
+		helper.setFrom(emailSettings.getFromAddress(), emailSettings.getSenderName());
+		helper.setTo(toAddress);
+		helper.setSubject(subject);
+		
+		DateFormat dateFormatter =  new SimpleDateFormat("E, dd MMM yyyy - HH:mm:ss");
+		String orderTime = dateFormatter.format(order.getOrderTime());
+		
+		CurrencySettingBag currencySettings = settingService.getCurrencySettings();
+		String totalAmount = Utility.formatCurrency(order.getTotal(), currencySettings);
+		
+		content = content.replace("[[name]]", order.getCustomer().getFullName());
+		content = content.replace("[[orderId]]", String.valueOf(order.getId()));
+		content = content.replace("[[orderTime]]", orderTime);
+		content = content.replace("[[shippingAddress]]", order.getShippingAddress());
+		content = content.replace("[[total]]", totalAmount);
+		content = content.replace("[[paymentMethod]]", order.getPaymentMethod().toString());
+		
+		helper.setText(content, true);
+		mailSender.send(message);		
 	}
 }

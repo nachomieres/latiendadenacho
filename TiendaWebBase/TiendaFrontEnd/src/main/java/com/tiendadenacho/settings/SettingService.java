@@ -1,6 +1,5 @@
 package com.tiendadenacho.settings;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +26,10 @@ public class SettingService {
 		settings.addAll(repo.findByCategory(SettingCategory.MAIL_TEMPLATES));
 		
 		return new EmailSettingBag(settings);
+	}
+	
+	public CurrencySettingBag getCurrencySettings() {
+		List<Setting> settings = repo.findByCategory(SettingCategory.CURRENCY);
+		return new CurrencySettingBag(settings);
 	}
 }
