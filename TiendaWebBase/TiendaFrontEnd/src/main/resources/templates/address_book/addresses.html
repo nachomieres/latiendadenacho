@@ -7,9 +7,10 @@
 	<div th:replace="navigation :: search_nav"></div>
 	
 	<div class="text-center">
-		<div><h2>Libreta de direcciones</h2></div>
+		<div><h2 th:text="${param.redirect != null && param.redirect[0] == 'checkout'} ? 'Elige direccion de envio' : 'Tus direcciones'"></h2></div>
 		<div>
-			<a th:href="@{/address_book/new}" class="h4">Añadir direccion</a>
+			<a th:unless="${param.redirect}" th:href="@{/address_book/new}" class="h4">Añadir direccion</a>
+			<a th:if="${param.redirect != null && param.redirect[0] == 'checkout'}" th:href="@{/address_book/new(redirect=checkout)}" class="h4">Añadir direccion</a>
 		</div>
 	</div>
 	
@@ -25,18 +26,22 @@
 						<div class="col">
 							<b>Principal</b>						
 							<th:block th:if="${usePrimaryAddressAsDefault}">
-							<span class="text-danger">[En uso]</span>
+							<span class="text-danger" th:text="${param.redirect != null && param.redirect[0] == 'checkout' ? '[Seleccionada]' : '[En uso]'}"></span>
 							</th:block>
 							
 							<th:block th:unless="${usePrimaryAddressAsDefault}">
 							<a th:unless="${param.redirect}" th:href="@{'/address_book/default/0'}">[Usar esta]</a>
-							<a th:if="${param.redirect}" th:href="@{'/address_book/default/0?redirect=' + ${param.redirect}}">[Usar esta]</a>
-							</th:block>						
+							<a th:if="${param.redirect != null && param.redirect[0] == 'cart'}" th:href="@{'/address_book/default/0?redirect=cart'}">[Usar esta]</a>
+							<a th:if="${param.redirect != null && param.redirect[0] == 'checkout'}" th:href="@{'/address_book/default/0?redirect=checkout'}">[Seleccionar]</a>
+							</th:block>				
 						</div>
 						<div class="col">
 							<div class="float-right">
-								<a class="fas fa-edit icon-dark" title="Editar direccion"
+								<a th:unless="${param.redirect}" class="fas fa-edit icon-dark" title="Editar direccion principal"
 									th:href="@{/account_details(redirect=address_book)}"></a>
+									
+								<a th:if="${param.redirect != null && param.redirect[0] == 'checkout'}" class="fas fa-edit icon-dark" title="Editar direccion principal"
+									th:href="@{/account_details(redirect=checkout)}"></a>									
 							</div>
 						</div>
 					</div>
@@ -60,25 +65,31 @@
 				<div class="card-header">
 					<div class="row">
 						<div class="col">
-							<b>Direccion #[[${status.count + 1}]]</b>							
+							<b>Direccion #[[${status.count + 1}]]</b>	
+													
 							<th:block th:if="${address.defaultForShipping}">
-							<span class="text-danger">[En uso]</span>
+							<span class="text-danger" th:text="${param.redirect != null && param.redirect[0] == 'checkout' ? '[Seleccionada]' : '[En uso]'}"></span>
 							</th:block>
 							
 							<th:block th:unless="${address.defaultForShipping}">
 							<a th:unless="${param.redirect}" th:href="@{'/address_book/default/' + ${address.id}}">[Usar esta]</a>
-							<a th:if="${param.redirect}" th:href="@{'/address_book/default/' + ${address.id} + '?redirect=' + ${param.redirect}}">[Usar esta]</a>
+							<a th:if="${param.redirect != null && param.redirect[0] == 'cart'}" th:href="@{'/address_book/default/' + ${address.id} + '?redirect=cart'}">[Usar esta]</a>
+							<a th:if="${param.redirect != null && param.redirect[0] == 'checkout'}" th:href="@{'/address_book/default/' + ${address.id} + '?redirect=checkout'}">[Seleccionar]</a>
 							</th:block>
 														
 						</div>
 						<div class="col">
 							<div class="float-right">
-								<a class="fas fa-edit icon-dark" title="Editar direccion"
+								<a th:unless="${param.redirect}" class="fas fa-edit icon-dark" title="Editar direccion"
 									th:href="@{'/address_book/edit/' + ${address.id}}"></a>
+									
+								<a th:if="${param.redirect != null && param.redirect[0] == 'checkout'}" class="fas fa-edit icon-dark" title="Editar direccion"
+									th:href="@{'/address_book/edit/' + ${address.id} + '?redirect=checkout'}"></a>
+																		
 								&nbsp;
-								<a class="fas fa-trash icon-dark linkDelete" title="Borrar direccion"
+								<a class="fas fa-trash icon-dark linkDelete" title="Delete this address"
 									th:entityId="${address.id}"
-									th:href="@{'/address_book/delete/' + ${address.id}}"></a>									
+									th:href="@{'/address_book/delete/' + ${address.id}}"></a>								
 							</div>
 						</div>						
 					</div>

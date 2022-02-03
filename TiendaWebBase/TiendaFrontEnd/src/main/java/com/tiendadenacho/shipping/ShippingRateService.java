@@ -24,7 +24,7 @@ public class ShippingRateService {
 			shippingRate.setCountry(customer.getCountry());
 			shippingRate.setState(state);
 			shippingRate.setDays(2);
-			shippingRate.setRate(2);
+			shippingRate.setRate((float) 0.2);
 			return shippingRate;
 		}
 		else {
@@ -44,7 +44,7 @@ public class ShippingRateService {
 			shippingRate.setCountry(address.getCountry());
 			shippingRate.setState(state);
 			shippingRate.setDays(2);
-			shippingRate.setRate(2);
+			shippingRate.setRate((float) 0.2);
 			return shippingRate;
 		}
 		else {

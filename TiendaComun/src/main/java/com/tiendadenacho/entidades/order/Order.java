@@ -16,8 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.tiendadenacho.entidades.AbstractAddress;
+import com.tiendadenacho.entidades.Address;
 import com.tiendadenacho.entidades.Customer;
-import com.tiendadenacho.entidades.IdBaseEntity;
 
 @Entity
 @Table(name = "orders")
@@ -179,6 +179,19 @@ public class Order extends AbstractAddress  {
 		destination += country;
 		
 		return destination;
+	}
+
+	public void copyShippingAddress(Address address) {
+		setFirstName(address.getFirstName());
+		setLastName(address.getLastName());
+		setPhoneNumber(address.getPhoneNumber());
+		setAddressLine1(address.getAddressLine1());
+		setAddressLine2(address.getAddressLine2());
+		setCity(address.getCity());
+		setCountry(address.getCountry().getName());
+		setPostalCode(address.getPostalCode());
+		setState(address.getState());		
+		
 	}
 	
 	

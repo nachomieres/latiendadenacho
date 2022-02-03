@@ -69,9 +69,16 @@ public class AddressController {
 		address.setCustomer(customer);
 		addressService.save(address);
 		
+		String redirectOption = request.getParameter("redirect");
+		String redirectURL = "redirect:/address_book";
+		
+		if ("checkout".equals(redirectOption)) {
+			redirectURL += "?redirect=checkout";
+		}
+		
 		ra.addFlashAttribute("message", "La direccion se ha guardado correctamente.");
 		
-		return "redirect:/address_book";
+		return redirectURL;
 	}
 	
 	@GetMapping("/address_book/edit/{id}")
@@ -113,6 +120,10 @@ public class AddressController {
 			redirectURL = "redirect:/cart";
 		}
 		
-		return "redirect:/address_book"; 
+		else if ("checkout".equals(redirectOption)) {
+			redirectURL = "redirect:/checkout";
+		}
+		
+		return redirectURL; 
 	}
 }

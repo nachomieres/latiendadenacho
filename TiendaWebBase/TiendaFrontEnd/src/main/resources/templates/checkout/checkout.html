@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head('Tu compra', 'none')" />
+<body>
+<div class="container-fluid">
+	<div th:replace="navigation :: header_menu"></div>
+	<div th:replace="navigation :: search_nav"></div>
+
+	<div class="text-center">
+		<h2>Tu compra</h2>
+	</div>
+	
+	<div class="row m-1">
+		<div class="col-sm-8">
+			<div class="card">
+				<div class="card-header"><h5>Informacion de envio</h5></div>
+				<div class="card-body">					
+					<p>
+						<b>Enviar a:</b>&nbsp; [[${shippingAddress}]]
+						<a th:href="@{/address_book(redirect=checkout)}">[Enviar a otra direccion]</a>
+					</p>
+					<p>
+						<b>Plazo de envio: </b>[[${checkoutInfo.deliverDays}]] dia(s)
+					</p>
+					<p>
+						<b>Fecha estimada de entrega: </b>[[${#dates.format(checkoutInfo.deliverDate, 'E, dd MMM yyyy')}]]
+					</p>
+				</div>
+			</div>
+			
+			<div class="card mt-3 mb-3">
+				<div class="card-header"><h5>Forma de pago</h5></div>
+				<div class="card-body">		
+					<div th:if="${checkoutInfo.codSupported}">
+						<form th:action="@{/place_order}" method="post">
+						<p>
+							<input type="radio" name="paymentMethod" id="radioCOD" value="COD" /> Contrarreembolso
+							&nbsp;
+							<button class="btn btn-primary d-none" type="submit" id="buttonSubmit">Hacer pedido contrareembolso</button>
+						</p>
+						</form>
+					</div>			
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="col-sm-4">
+			<div class="card">
+				<div class="card-header"><h5>Resumen del pedido</h5></div>
+				<div class="card-body">			
+					<div>
+					<table>
+						<th:block th:each="item : ${cartItems}">
+						<tr th:with="product = ${item.product}">
+							<td>[[${item.quantity}]] X &nbsp;&nbsp;</td>
+							<td width="70%">
+								<a th:href="@{'/p/' + ${product.alias}}" target="_blank">
+									[[${product.shortName}]]
+								</a>
+								<br/>
+								<small>Envio: <div th:replace="fragments :: format_currency(${item.shippingCost})"></div></small>
+							</td>
+							<td>
+								<div th:replace="fragments :: format_currency(${item.subtotal})">
+							</td>
+						</tr>
+						</th:block>
+						<tr><td colspan="3"><hr/></tr>
+					</table>
+					</div>
+					
+					<div class="row mt-2">
+						<div class="col">Total productos: </div>
+						<div class="col"><div th:replace="fragments :: format_currency(${checkoutInfo.productTotal})"></div></div>
+					</div>
+					
+					<div class="row mt-2">
+						<div class="col">Total envio: </div>
+						<div class="col"><div th:replace="fragments :: format_currency(${checkoutInfo.shippingCostTotal})"></div></div>
+					</div>
+							
+					<div class="row mt-2">
+						<div class="col">Total a pagar: </div>
+						<div class="col"><b><div th:replace="fragments :: format_currency(${checkoutInfo.paymentTotal})"></div></b></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div th:replace="navigation :: footer_menu"></div>
+</div>
+<script type="text/javascript">
+	contextPath = "[[@{/}]]";
+	var csrfHeaderName = "[[${_csrf.headerName}]]";
+	var csrfValue = "[[${_csrf.token}]]";
+	
+	$(document).ready(function() {
+		$("#radioCOD").on("click", function() {
+			$("#buttonSubmit").removeClass("d-none");
+		});
+	});
+
+</script>
+</body>
+</html>	
