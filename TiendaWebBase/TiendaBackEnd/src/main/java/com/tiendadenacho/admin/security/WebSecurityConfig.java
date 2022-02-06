@@ -44,20 +44,36 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
+			.antMatchers("/states/list_by_country/**")
+				.hasAnyAuthority("Admin", "Gestor")
+				
 			.antMatchers("/users/**", "/settings/**", "/countries/**", "/states/**")
 				.hasAuthority("Admin")
+				
 			.antMatchers("/categories/**", "/brands/**")
 				.hasAnyAuthority("Admin", "Editor")
+				
 			.antMatchers("/products/new", "/products/delete/**")
 				.hasAnyAuthority("Admin", "Editor")		
+				
 			.antMatchers("/products/edit/**", "/products/save", "/products/check_unique")
-				.hasAnyAuthority("Admin", "Editor", "Gestor")				
+				.hasAnyAuthority("Admin", "Editor", "Gestor")			
+				
 			.antMatchers("/products", "/products/", "/products/detail/**", "/products/page/**")
-				.hasAnyAuthority("Admin", "Editor", "Gestor", "Enviador")				
+				.hasAnyAuthority("Admin", "Editor", "Gestor", "Enviador")	
+				
 			.antMatchers("/products/**")
 				.hasAnyAuthority("Admin", "Editor")		
-			.antMatchers("/customers/**", "/orders/**")
+				
+			.antMatchers("/orders", "/orders/", "/orders/page/**", "/orders/detail/**")
+					.hasAnyAuthority("Admin", "Gestor", "Enviador")
+				
+			.antMatchers("/customers/**", "/orders/**", "/get_shipping_cost")
 				.hasAnyAuthority("Admin", "Gestor")
+				
+			.antMatchers("/orders_shipper/update/**")
+				.hasAuthority("Enviador")
+				
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()
@@ -66,7 +82,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll()
 			.and().logout().permitAll()
 			.and().rememberMe().key("MiClAvEsEcReTa2021");
-		
+		http.headers().frameOptions().sameOrigin();
 	}
 
 	@Override

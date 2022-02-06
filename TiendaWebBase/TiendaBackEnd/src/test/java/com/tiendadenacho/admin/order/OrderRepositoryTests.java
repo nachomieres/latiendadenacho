@@ -104,7 +104,6 @@ public class OrderRepositoryTests {
 		mainOrder.setSubtotal(subtotal);
 		mainOrder.setTotal(subtotal + 30);
 		
-		mainOrder.setPaymentMethod(PaymentMethod.COD);
 		mainOrder.setStatus(OrderStatus.EN_PROCESO);
 		mainOrder.setDeliverDate(new Date());
 		mainOrder.setDeliverDays(3);
@@ -128,7 +127,7 @@ public class OrderRepositoryTests {
 		Order order = repo.findById(orderId).get();
 		
 		order.setStatus(OrderStatus.ENVIADO);
-		order.setPaymentMethod(PaymentMethod.COD);
+		order.setPaymentMethod(PaymentMethod.CONTRAREEMBOLSO);
 		order.setOrderTime(new Date());
 		order.setDeliverDays(2);
 		

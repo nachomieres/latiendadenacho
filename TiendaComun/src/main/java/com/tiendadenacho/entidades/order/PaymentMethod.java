@@ -1,5 +1,5 @@
 package com.tiendadenacho.entidades.order;
 
 public enum PaymentMethod {
-	COD, TARJETA_CREDITO
+	CONTRAREEMBOLSO, TARJETA_CREDITO, PAYPAL
 }

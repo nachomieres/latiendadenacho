@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.tiendadenacho.Utility;
 import com.tiendadenacho.address.AddressService;
+import com.tiendadenacho.checkout.paypal.PayPalApiException;
+import com.tiendadenacho.checkout.paypal.PayPalService;
 import com.tiendadenacho.customer.CustomerService;
 import com.tiendadenacho.entidades.Address;
 import com.tiendadenacho.entidades.CartItem;
@@ -29,6 +31,7 @@ import com.tiendadenacho.entidades.order.PaymentMethod;
 import com.tiendadenacho.order.OrderService;
 import com.tiendadenacho.settings.CurrencySettingBag;
 import com.tiendadenacho.settings.EmailSettingBag;
+import com.tiendadenacho.settings.PaymentSettingBag;
 import com.tiendadenacho.settings.SettingService;
 import com.tiendadenacho.shipping.ShippingRateService;
 import com.tiendadenacho.shoppingcart.ShoppingCartService;
@@ -43,6 +46,7 @@ public class CheckoutController {
 	@Autowired private ShoppingCartService cartService;
 	@Autowired private OrderService orderService;
 	@Autowired private SettingService settingService;
+	@Autowired private PayPalService paypalService;
 	
 	@GetMapping("/checkout")
 	public String showCheckoutPage(Model model, HttpServletRequest request) {
@@ -66,6 +70,13 @@ public class CheckoutController {
 		List<CartItem> cartItems = cartService.listCartItems(customer);
 		CheckoutInfo checkoutInfo = checkoutService.prepareCheckout(cartItems, shippingRate);
 		
+		String currencyCode = settingService.getCurrencyCode();
+		PaymentSettingBag paymentSettings = settingService.getPaymentSettings();
+		String paypalClientId = paymentSettings.getClientID();
+		
+		model.addAttribute("paypalClientId", paypalClientId);
+		model.addAttribute("currencyCode", currencyCode);
+		model.addAttribute("customer", customer);
 		model.addAttribute("checkoutInfo", checkoutInfo);
 		model.addAttribute("cartItems", cartItems);
 		
@@ -139,5 +150,31 @@ public class CheckoutController {
 		
 		helper.setText(content, true);
 		mailSender.send(message);		
+	}
+	
+	@PostMapping("/process_paypal_order")
+	public String processPayPalOrder(HttpServletRequest request, Model model) 
+			throws UnsupportedEncodingException, MessagingException {
+		String orderId = request.getParameter("orderId");
+		
+		String pageTitle = "Fallo de Checkout";
+		String message = null;
+		
+		try {
+			if (paypalService.validateOrder(orderId)) {
+				return placeOrder(request);
+			} else {
+				pageTitle = "Fallo de Checkout";
+				message = "ERROR: No se puede completar la transacion por errores en los datos del pedido";
+			}
+		} catch (PayPalApiException e) {
+			message = "ERROR: Fallo de la transacion por: " + e.getMessage();
+		}
+		
+		model.addAttribute("pageTitle", pageTitle);
+		model.addAttribute("title", pageTitle);
+		model.addAttribute("message", message);
+		
+		return "message";
 	}
 }

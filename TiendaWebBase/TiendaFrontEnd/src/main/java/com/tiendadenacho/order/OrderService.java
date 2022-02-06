@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.tiendadenacho.checkout.CheckoutInfo;
@@ -14,11 +18,15 @@ import com.tiendadenacho.entidades.Customer;
 import com.tiendadenacho.entidades.order.Order;
 import com.tiendadenacho.entidades.order.OrderDetail;
 import com.tiendadenacho.entidades.order.OrderStatus;
+import com.tiendadenacho.entidades.order.OrderTrack;
 import com.tiendadenacho.entidades.order.PaymentMethod;
 import com.tiendadenacho.entidades.product.Product;
+import com.tiendadenacho.exception.OrderNotFoundException;
 
 @Service
 public class OrderService {
+	
+	public static final int ORDERS_PER_PAGE = 5;
 	
 	@Autowired private OrderRepository repo;
 	
@@ -26,7 +34,13 @@ public class OrderService {
 			PaymentMethod paymentMethod, CheckoutInfo checkoutInfo) {
 		Order newOrder = new Order();
 		newOrder.setOrderTime(new Date());
-		newOrder.setStatus(OrderStatus.NUEVO);
+		
+		if (paymentMethod.equals(PaymentMethod.PAYPAL)) {
+			newOrder.setStatus(OrderStatus.PAGADO);
+		} else {
+			newOrder.setStatus(OrderStatus.NUEVO);
+		}
+		
 		newOrder.setCustomer(customer);
 		newOrder.setProductCost(checkoutInfo.getProductCost());
 		newOrder.setSubtotal(checkoutInfo.getProductTotal());
@@ -58,7 +72,60 @@ public class OrderService {
 			orderDetails.add(orderDetail);
 		}
 		
+		OrderTrack track = new OrderTrack();
+		track.setOrder(newOrder);
+		track.setStatus(OrderStatus.NUEVO);
+		track.setNotes(OrderStatus.NUEVO.defaultDescription());
+		track.setUpdatedTime(new Date());
+		
+		newOrder.getOrderTracks().add(track);
+		
 		return repo.save(newOrder);
+	}
+	
+	public Page<Order> listForCustomerByPage(Customer customer, int pageNum, 
+			String sortField, String sortDir, String keyword) {
+		Sort sort = Sort.by(sortField);
+		sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+		
+		Pageable pageable = PageRequest.of(pageNum - 1, ORDERS_PER_PAGE, sort);
+		
+		if (keyword != null) {
+			return repo.findAll(keyword, customer.getId(), pageable);
+		}
+		
+		return repo.findAll(customer.getId(), pageable);		
+	}	
+	
+	public Order getOrder(Integer id, Customer customer) {
+		return repo.findByIdAndCustomer(id, customer);
+	}	
+	
+	public void setOrderReturnRequested(OrderReturnRequest request, Customer customer) 
+			throws OrderNotFoundException {
+		Order order = repo.findByIdAndCustomer(request.getOrderId(), customer);
+		if (order == null) {
+			throw new OrderNotFoundException("Order ID " + request.getOrderId() + " not found");
+		}
+		
+		if (order.isReturnRequested()) return;
+		
+		OrderTrack track = new OrderTrack();
+		track.setOrder(order);
+		track.setUpdatedTime(new Date());
+		track.setStatus(OrderStatus.PETICION_DEVOLUCION);
+		
+		String notes = "Razon: " + request.getReason();
+		if (!"".equals(request.getNote())) {
+			notes += ". " + request.getNote();
+		}
+		
+		track.setNotes(notes);
+		
+		order.getOrderTracks().add(track);
+		order.setStatus(OrderStatus.PETICION_DEVOLUCION);
+		
+		repo.save(order);
 	}
 
 }
