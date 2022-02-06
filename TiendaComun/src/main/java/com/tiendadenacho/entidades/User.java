@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.tiendadenacho.common.Constants;
+
 @Entity
 @Table (name = "users")
 public class User extends IdBaseEntity  {
@@ -125,7 +127,7 @@ public class User extends IdBaseEntity  {
 	public String getFotoImagePath() {
 		if (id == null || foto == null) return "/images/default-user.png";
 		
-		return "/user-photos/" + this.id + "/" + this.foto;
+		return Constants.S3_BASE_URI + "/user-photos/" + this.id + "/" + this.foto;
 	}
 	
 	@Transient

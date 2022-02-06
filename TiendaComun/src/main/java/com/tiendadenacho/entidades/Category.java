@@ -12,6 +12,8 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.tiendadenacho.common.Constants;
+
 @Entity
 @Table(name = "categories")
 public class Category extends IdBaseEntity {
@@ -144,7 +146,7 @@ public class Category extends IdBaseEntity {
 	public String getImagePath() {
 		if (this.id == null) return "/images/image-thumbnail.png";
 		
-		return "/category-images/" + this.id + "/" + this.image;
+		return Constants.S3_BASE_URI + "/category-images/" + this.id + "/" + this.image;
 	}
 	
 	public boolean isHasChildren() {

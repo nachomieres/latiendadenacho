@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.tiendadenacho.common.Constants;
 import com.tiendadenacho.entidades.Brand;
 import com.tiendadenacho.entidades.Category;
 import com.tiendadenacho.entidades.IdBaseEntity;
@@ -249,7 +250,7 @@ public class Product extends IdBaseEntity  {
 	public String getMainImagePath () {
 		if (id == null || mainImage == null) return "/images/image-thumbnail.png";
 		
-		return "/product-images/" + this.id + "/" + this.mainImage;
+		return Constants.S3_BASE_URI + "/product-images/" + this.id + "/" + this.mainImage;
 	}
 	
 	public List<ProductDetail> getDetails() {
