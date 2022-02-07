@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.tiendadenacho.admin.FileUploadUtil;
+import com.tiendadenacho.admin.AmazonS3Util;
 import com.tiendadenacho.entidades.Category;
 import com.tiendadenacho.exception.CategoryNotFoundException;
 
@@ -92,9 +92,11 @@ public class CategoryController {
 			
 			Category savedCategory = service.save(category);
 			String uploadDir ="../category-images/" + savedCategory.getId();
-			
-			FileUploadUtil.cleanDir(uploadDir);
-			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);		
+		
+//			FileUploadUtil.cleanDir(uploadDir);
+//			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);			
+			AmazonS3Util.removeFolder(uploadDir);
+			AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
 		} else {
 			service.save(category);
 		}
@@ -137,7 +139,8 @@ public class CategoryController {
 			try {
 				service.delete(id);
 				String categoryDir = "../categories-images/" + id;
-				FileUploadUtil.removeDir(categoryDir);
+				//FileUploadUtil.removeDir(categoryDir);
+				AmazonS3Util.removeFolder(categoryDir);
 				redirectAttributes.addAttribute("message", "La categoria con ID " + id + " ha sido borrada");
 			} catch (Exception e) {
 				redirectAttributes.addAttribute("message", e.getMessage());

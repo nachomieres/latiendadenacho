@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.tiendadenacho.admin.FileUploadUtil;
+import com.tiendadenacho.admin.AmazonS3Util;
 import com.tiendadenacho.admin.category.CategoryService;
 import com.tiendadenacho.admin.paging.PagingAndSortingHelper;
 import com.tiendadenacho.admin.paging.PagingAndSortingParam;
@@ -70,8 +70,10 @@ public class BrandController {
 			Brand savedBrand = service.save(brand);
 			String uploadDir = "../brand-logos/" + savedBrand.getId();
 			
-			FileUploadUtil.cleanDir(uploadDir);
-			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);		
+//			FileUploadUtil.cleanDir(uploadDir);
+//			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);		
+			AmazonS3Util.removeFolder(uploadDir);
+			AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
 		} else {
 			service.save(brand);
 		}
@@ -105,7 +107,8 @@ public class BrandController {
 		try {
 			service.delete(id);
 			String brandDir = "../brand-logos/" + id;
-			FileUploadUtil.removeDir(brandDir);
+			//FileUploadUtil.removeDir(brandDir);
+			AmazonS3Util.removeFolder(brandDir);
 			
 			redirectAttributes.addFlashAttribute("message", 
 					"La marca con ID " + id + " se ha borrado correctamente");

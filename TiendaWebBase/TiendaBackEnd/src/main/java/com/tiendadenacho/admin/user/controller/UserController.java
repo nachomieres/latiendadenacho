@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.tiendadenacho.admin.AmazonS3Util;
 import com.tiendadenacho.admin.FileUploadUtil;
 import com.tiendadenacho.admin.paging.PagingAndSortingHelper;
 import com.tiendadenacho.admin.paging.PagingAndSortingParam;
@@ -71,8 +72,11 @@ public class UserController {
 			
 			String uploadDir = "user-photos/" + savedUser.getId();		
 			
-			FileUploadUtil.cleanDir(uploadDir);
-			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);			
+			AmazonS3Util.removeFolder(uploadDir);
+			AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
+//			FileUploadUtil.cleanDir(uploadDir);
+//			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);			
+			
 		} else {
 			if (user.getFoto().isEmpty()) user.setFoto(null);
 			service.save(user);
@@ -111,6 +115,9 @@ public class UserController {
 			RedirectAttributes redirectAttributes) {
 		try {
 			service.delete(id);			
+			String userPhotosDir = "user-photos/" + id;
+			AmazonS3Util.removeFolder(userPhotosDir);
+			
 			redirectAttributes.addFlashAttribute("message", "El usuario Id " + id  +" ha sido borrado correctamente.");
 		}
 		catch (UserNotFoundException e) {

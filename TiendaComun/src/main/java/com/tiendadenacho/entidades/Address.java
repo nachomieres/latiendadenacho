@@ -1,5 +1,6 @@
 package com.tiendadenacho.entidades;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -10,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "addresses")
 public class Address extends AbstractAddressWithCountry {
 		
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 	
