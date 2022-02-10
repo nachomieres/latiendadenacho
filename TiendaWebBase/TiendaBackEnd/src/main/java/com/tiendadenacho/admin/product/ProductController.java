@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -126,8 +125,8 @@ public class ProductController {
 			RedirectAttributes redirectAttributes) {
 		try {
 			productService.delete(id);
-			String productExtraImagesDir = "../product-images/" + id + "/extras";
-			String productImagesDir = "../product-images/" + id;
+			String productExtraImagesDir ="product-images/" + id + "/extras";
+			String productImagesDir = "product-images/" + id;
 			FileUploadUtil.removeDir(productExtraImagesDir);
 			FileUploadUtil.removeDir(productImagesDir);
 			

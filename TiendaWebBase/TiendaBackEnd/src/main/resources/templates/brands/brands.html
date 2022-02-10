@@ -2,19 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: page_head('Marcas', 'none')" />
 <body>
-<div class="container-fluid">
+<div class="container">
 	<div th:replace="navigation :: menu"></div>
 	<div>
 		<h2>Gestion Marcas</h2>	
-		
 		<a th:href="@{/brands/new}" class="fas fa-folder-plus fa-2x icon-dark mr-2"></a>
-		<a th:href="@{/brands/export/csv}" class="fas fa-file-csv fa-2x icon-dark mr-2"></a>
 	</div>
 		
 	<div th:replace="fragments :: search_form_and_message" />
 	
 	<div class="full-details">
-		<table class="table table-bordered table-striped table-hover table-responsive-xl">
+		<table class="table table-bordered table-striped table-hover text-center">
 			<thead class="thead-dark">
 				<tr>
 					<th class="hideable-column">ID</th>
@@ -28,7 +26,7 @@
 				<tr th:each="brand : ${listBrands}">
 					<td class="hideable-column">[[${brand.id}]]</td>
 					<td>
-						<img th:src="@{${brand.logoPath}}" style="width: 100px" class="img-fluid"/>
+						<img th:src="@{${brand.logoPath}}"  style="max-height: 80px;" class="img-thumbnail"/>
 					</td>
 					<td>[[${brand.name}]]</td>
 					<td>

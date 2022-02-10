@@ -29,7 +29,7 @@ public class Category extends IdBaseEntity {
 	
 	private boolean enabled;
 	
-	@Column(name = "all_parent_ids", length = 256, nullable = true)
+	@Column(name = "all_parent_ids", length = 255, nullable = true)
 	private String allParentIDs;
 	
 	@OneToOne

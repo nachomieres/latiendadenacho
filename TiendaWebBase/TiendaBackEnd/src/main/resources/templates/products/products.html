@@ -2,13 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragments :: page_head('Productos', 'none')" />
 <body>
-<div class="container-fluid">
+<div class="container">
 	<div th:replace="navigation :: menu"></div>
 	<div>
 		<h2>Gestion Productos</h2>	
 		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
-			<a th:href="@{/products/new}" class="fas fa-folder-plus fa-2x icon-dark mr-2"></a>
-			<a th:href="@{/products/export/csv}" class="fas fa-file-csv fa-2x icon-dark mr-2"></a>
+			<a th:href="@{/products/new}" class="fas fa-folder-plus fa-2x icon-dark mr-2"></a>			
 		</th:block>
 	</div>
 		
@@ -17,6 +16,7 @@
 			<input type="hidden" name="sortField" th:value="${sortField}" />
 			<input type="hidden" name="sortDir" th:value="${sortDir}" />
 			
+			<div class=" m-2">
 			Categoria:&nbsp;
 			<select class="form-control" name="categoryId" id="dropdownCategory">
 				<option value="0">Todas las categorias</option>				
@@ -35,6 +35,7 @@
 			<button type="button" class="btn btn-secondary" onclick="clearFilter()">
 				<i class="fas fa-eraser"></i>
 			</button>
+			</div>
 		</form>
 		
 		<div th:if="${message != null}" class="alert alert-success text-center">
@@ -43,7 +44,7 @@
 	</div>
 	
 	<div class="full-details">
-		<table class="table table-bordered table-striped table-hover table-responsive-xl">
+		<table class="table table-bordered table-striped table-hover table-responsive-xl text-center">
 			<thead class="thead-dark">
 				<tr>
 					<th class="hideable-column">
@@ -73,7 +74,7 @@
 				<tr th:each="product : ${listProducts}">
 					<td class="hideable-column">[[${product.id}]]</td>
 					<td>
-						<img th:src="@{${product.mainImagePath}}" style="width: 120px" class="img-fluid" />
+						<img th:src="@{${product.mainImagePath}}" style="max-height: 150px;" class="img-fluid" />
 					</td>
 					<td>
 						<a class="link-detail"

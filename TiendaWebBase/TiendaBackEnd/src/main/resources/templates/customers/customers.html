@@ -2,18 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: page_head('Clientes', 'none')" />
 <body>
-<div class="container-fluid">
+<div class="container">
 	<div th:replace="navigation :: menu"></div>
 	<div>
 		<h2>Gestion de clientes</h2>	
-		
-		<a th:href="@{/customers/export/csv}" class="fas fa-file-csv fa-2x icon-dark mr-2"></a>
 	</div>
 		
 	<div th:replace="fragments :: search_form_and_message" />
 	
 	<div class="full-details">
-		<table class="table table-bordered table-striped table-hover table-responsive-xl">
+		<table class="table table-bordered table-striped table-hover table-responsive-xl text-center">
 			<thead class="thead-dark">
 				<tr>
 					<th th:replace="fragments :: column_link('id', 'ID', 'none')" />
@@ -29,7 +27,7 @@
 					</th>
 					
 					<th class="hideable-column">
-					<th th:replace="fragments :: column_link('state', 'Provincia / Estado', 'tag')" />
+					<th th:replace="fragments :: column_link('state', 'Provincia', 'tag')" />
 					</th>
 					
 					<th th:replace="fragments :: column_link('country', 'Pais', 'none')" />

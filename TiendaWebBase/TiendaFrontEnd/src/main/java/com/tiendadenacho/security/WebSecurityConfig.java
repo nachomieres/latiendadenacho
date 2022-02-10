@@ -56,6 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.tokenValiditySeconds(14 * 24 * 60 * 60)
 		.and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+		http.headers().frameOptions().sameOrigin();
 	}
 
 	@Override

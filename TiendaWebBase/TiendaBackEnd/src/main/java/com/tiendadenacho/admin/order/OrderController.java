@@ -29,6 +29,8 @@ import com.tiendadenacho.entidades.order.OrderTrack;
 import com.tiendadenacho.entidades.product.Product;
 import com.tiendadenacho.entidades.setting.Setting;
 
+
+
 @Controller
 public class OrderController {
 	private String defaultRedirectURL = "redirect:/orders/page/1?sortField=orderTime&sortDir=desc";
@@ -51,7 +53,7 @@ public class OrderController {
 		orderService.listByPage(pageNum, helper);
 		loadCurrencySetting(request);
 		
-		if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Gestor") && loggedUser.hasRole("Enviador")) {
+		if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Gestor") && loggedUser.hasRole("Expedidor")) {
 			return "orders/orders_shipper";
 		}
 		

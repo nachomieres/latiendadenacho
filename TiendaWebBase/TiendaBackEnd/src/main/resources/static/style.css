@@ -22,3 +22,25 @@
 	div.less-details { display: none; }
 	.hideable-column { display: table-cell; }
 }
+
+body {
+	font-family: 'Lato', sans-serif;
+	background-color: #f7f7f7;
+	padding-top: 24px;
+}
+
+h2 {
+	margin: 0.5em;
+}
+
+.container {
+	background-color: #ffffff; important!
+}
+
+td {
+	vertical-align: middle!important;
+	font-size: 1.2em;
+}
+th {
+	font-size: 1.3em;
+}

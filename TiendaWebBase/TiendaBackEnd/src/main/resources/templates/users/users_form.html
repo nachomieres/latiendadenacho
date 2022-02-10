@@ -4,7 +4,7 @@
 <head th:replace="fragments :: page_head (${pageTitle}, 'none')"/>
 
 <body>
-	<div class="container-fluid">
+	<div class="container">
 		<div th:replace="navigation :: menu"></div>
 		<div>
 			<h2>Gestion de Usuarios | [[${pageTitle}]]</h2>
@@ -89,7 +89,7 @@
 	</div>
 	<script type="text/javascript">				
 		moduleURL = "[[@{/users}]]";
-		MAX_FILE_SIZE = 102400; // 100 Kb
+		MAX_FILE_SIZE = 502400; // 500 Kb
 		
 		function checkEmailUnique (form) {
 			url = "[[@{/users/check_email}]]";

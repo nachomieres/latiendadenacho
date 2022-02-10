@@ -4,7 +4,7 @@
 <head th:replace="fragments :: page_head (${pageTitle}, 'none')"/>
 
 <body>
-	<div class="container-fluid">
+	<div class="container">
 		<div th:replace="navigation :: menu"></div>
 		<div>
 			<h2>Gestion de Categorias | [[${pageTitle}]]</h2>
@@ -75,7 +75,7 @@
 	</div>
 	<script type="text/javascript">				
 		moduleURL = "[[@{/categories}]]";
-		MAX_FILE_SIZE = 102400; // 100 Kb
+		MAX_FILE_SIZE = 512000; // 500 Kb
 	
 		function checkUnique (form) {
 			catId = $("#id").val();

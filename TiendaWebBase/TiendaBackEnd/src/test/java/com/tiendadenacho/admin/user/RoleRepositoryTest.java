@@ -34,7 +34,7 @@ public class RoleRepositoryTest {
 	public void testCreateRestRoles () {
 		Role roleGestor = new Role ("Gestor", "Controla los precios y los clientes");
 		Role roleEditor = new Role ("Editor", "Controla categorias, marcas, productos...");
-		Role roleEnvios = new Role ("Enviador", "Controla los pedidos");
+		Role roleEnvios = new Role ("Expedidor", "Controla los pedidos");
 		Role RoleAsistente = new Role ("Asistente", "Controla las preguntas y las reseñas");
 		
 		repo.saveAll(List.of(roleGestor, roleEditor, roleEnvios, RoleAsistente));

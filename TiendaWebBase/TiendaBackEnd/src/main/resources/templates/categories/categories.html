@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: page_head('Categorias', 'none')" />
 <body>
-	<div class="container-fluid">
+	<div class="container">
 		<div th:replace="navigation :: menu"></div>
 		<div>
 			<h2>Gestion de Categorias</h2>
@@ -17,8 +17,7 @@
 		<div th:replace="fragments :: search_form_and_message"></div>
 
 		<div class="full-details">
-			<table
-				class="table table-bordered table-striped table-hover table-responsive-xl">
+			<table class="table table-bordered table-striped table-hover table-responsive-xl text-center">
 				<thead class="thead-dark">
 					<tr>
 						<th>ID</th>
@@ -27,14 +26,13 @@
 							th:replace="fragments :: column_link('name', 'Nombre', 'none')" />
 						<th class="hideable-column">Alias</th>
 						<th>Activo</th>
-						<th></th>
+						<th>Acciones</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="cat : ${listCategories}">
 						<td>[[${cat.id}]]</td>
-						<td><img th:src="@{${cat.imagePath}}" style="width: 100px"
-							class="img-fluid" /></td>
+						<td><img th:src="@{${cat.imagePath}}" style="max-height: 80px;" class="img-thumbnail"/></td>
 						<td>[[${cat.name}]]</td>
 						<td class="hideable-column">[[${cat.alias}]]</td>
 						<td>

@@ -5,9 +5,9 @@
 <head th:replace="fragments :: page_head('La Tienda de Nacho - Panel de Control', 'none')"/>
 
 <body>
-	<div class="container-fluid">
+	<div class="container">
 		<div th:replace="navigation :: menu"></div>
-		<div>
+		<div class="m-3">
 			<h2>Panel de Control de la Tienda de Nacho</h2>
 			Bienvenid@
 			<a th:href="@{/account}" sec:authentication="principal.fullname"></a>

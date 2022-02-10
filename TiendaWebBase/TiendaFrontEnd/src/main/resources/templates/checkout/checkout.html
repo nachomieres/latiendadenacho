@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: page_head('Tu compra', 'none')" />
 <body>
-<div class="container-fluid">
+<div class="container">
 	<div th:replace="navigation :: header_menu"></div>
 	<div th:replace="navigation :: search_nav"></div>
 
@@ -86,7 +86,8 @@
 							
 					<div class="row mt-2">
 						<div class="col">Total a pagar: </div>
-						<div class="col"><b><div th:replace="fragments :: format_currency(${checkoutInfo.paymentTotal})"></div></b></div>
+<!-- 						<div class="col"><b><div th:replace="fragments :: format_currency(${checkoutInfo.paymentTotal})"></div></b></div> -->
+							<div class="col"><b><span>[[${checkoutInfo.paymentTotal}]]</span></div></b></div>
 					</div>
 				</div>
 			</div>
@@ -146,7 +147,8 @@
 				
 				purchase_units: [{
 					amount: {
-						value: "[[${checkoutInfo.paymentTotal4PayPal}]]",
+						//value: "[[${checkoutInfo.paymentTotal4PayPal}]]",
+						value: "[[${checkoutInfo.paymentTotal}]]",
 						currency_code: "[[${currencyCode}]]"
 					}
 				}],

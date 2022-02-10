@@ -68,7 +68,7 @@ public class BrandController {
 			brand.setLogo(fileName);
 			
 			Brand savedBrand = service.save(brand);
-			String uploadDir = "../brand-logos/" + savedBrand.getId();
+			String uploadDir = "brand-logos/" + savedBrand.getId();
 			
 //			FileUploadUtil.cleanDir(uploadDir);
 //			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);		
@@ -106,7 +106,7 @@ public class BrandController {
 			RedirectAttributes redirectAttributes) {
 		try {
 			service.delete(id);
-			String brandDir = "../brand-logos/" + id;
+			String brandDir = "brand-logos/" + id;
 			//FileUploadUtil.removeDir(brandDir);
 			AmazonS3Util.removeFolder(brandDir);
 			

@@ -4,7 +4,7 @@
 <head th:replace="fragments :: page_head ('Gestion de Usuarios', 'none')"/>
 
 <body>
-<div class="container-fluid">
+<div class="container">
 	<div th:replace="navigation :: menu"></div>
 	<div>
 		<h2>Gestion de Usuarios</h2>
@@ -20,7 +20,7 @@
 	<div class="full-details">
 		<table
 			class="table table-bordered table-striped table-hover table-responsive-xl">
-			<thead class="thead-dark">
+			<thead class="thead-dark text-center">
 				<tr>
 					<th class="hideable-column">
 						<th th:replace="fragments :: column_link('id', 'ID', 'tag')">
@@ -37,15 +37,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="user : ${listUsers}">
-					<td class="hideable-column">[[${user.id}]]</td>
-					<td><div th:replace="fragments :: user_photos"></div></td>
-					<td>[[${user.nombre}]]</td>
-					<td>[[${user.apellidos}]]</td>
-					<td class="hideable-column">[[${user.email}]]</td>
-					<td>[[${user.roles}]]</td>
-					<td><div th:replace="fragments :: status (${user.enabled}, 'usuario', 'users/' + ${user.id})"></div></td>
-					<td>
+				<tr th:each="user : ${listUsers}" class="text-center">
+					<td class="hideable-column align-middle">[[${user.id}]]</td>
+					<td class="align-center"><div th:replace="fragments :: user_photos"></div></td>
+					<td class="align-middle">[[${user.nombre}]]</td>
+					<td class="align-middle">[[${user.apellidos}]]</td>
+					<td class="hideable-column align-middle">[[${user.email}]]</td>
+					<td class="align-middle">[[${user.roles}]]</td>
+					<td class="align-middle"><div th:replace="fragments :: status (${user.enabled}, 'usuario', 'users/' + ${user.id})"></div></td>
+					<td class="align-middle">
 						<div th:replace="fragments :: edit('usuario', '/users/edit/' + ${user.id})"></div>
 						&nbsp;&nbsp;
 						<div th:replace="fragments :: delete('usuario', ${user.id}, '/users/delete/' + ${user.id}, true)"></div>

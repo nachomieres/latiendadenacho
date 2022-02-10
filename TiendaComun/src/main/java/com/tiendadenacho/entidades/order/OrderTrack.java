@@ -19,7 +19,7 @@ import com.tiendadenacho.entidades.IdBaseEntity;
 @Entity
 @Table(name = "order_track")
 public class OrderTrack extends IdBaseEntity {
-    @Column(length = 256)
+    @Column(length = 255)
 	private String notes;
 	
 	private Date updatedTime;

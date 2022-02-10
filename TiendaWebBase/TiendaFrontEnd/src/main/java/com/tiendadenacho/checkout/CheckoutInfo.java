@@ -69,8 +69,8 @@ public class CheckoutInfo {
 	
 	public String getPaymentTotal4PayPal() {
 		DecimalFormat formatter = new DecimalFormat("##.##");
-		//return formatter.format(paymentTotal);
-		return String.valueOf(paymentTotal);
+		return formatter.format(paymentTotal);
+		//return String.valueOf(paymentTotal);
 	}
 
 }
