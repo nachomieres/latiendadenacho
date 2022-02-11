@@ -5,14 +5,14 @@
 <div class="container">
 	<div th:replace="navigation :: header_menu"></div>
 	<div th:replace="navigation :: search_nav"></div>
-	<div>
-		<h1>Listado por Categorias</h1>
+	<div class="text-center">
+		<h2>Listado por Categorias</h2>
 	</div>
 	
 	<div class="row">
-		<div class="col" th:each="cat : ${listCategories}">
-			<div><img th:src="@{${cat.imagePath}}" width="80" /></div>
-			<div>
+		<div class="col pb-5" th:each="cat : ${listCategories}">
+			<div><img th:src="@{${cat.imagePath}}" width="150px" /></div>
+			<div class="text-center mt-1">
 				<a th:href="@{'/c/' + ${cat.alias}}">[[${cat.name}]]</a>
 			</div>
 		</div>
