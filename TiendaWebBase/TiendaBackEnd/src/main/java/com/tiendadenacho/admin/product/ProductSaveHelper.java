@@ -1,25 +1,18 @@
 package com.tiendadenacho.admin.product;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tiendadenacho.admin.AmazonS3Util;
-import com.tiendadenacho.admin.FileUploadUtil;
 import com.tiendadenacho.entidades.product.Product;
 import com.tiendadenacho.entidades.product.ProductImage;
 
 public class ProductSaveHelper {
-	private static final Logger LOGGER = LoggerFactory.getLogger(ProductSaveHelper.class);
 	
 	static void deleteExtraImagesWeredRemovedOnForm(Product product) {
 		String extraImageDir = "product-images/" + product.getId() + "/extras";

@@ -1,10 +1,8 @@
-package com.tiendadenacho.admin.user.controller;
+package com.tiendadenacho.admin.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.tiendadenacho.admin.user.UserService;
 
 @RestController
 public class UserRestController {

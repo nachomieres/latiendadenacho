@@ -1,4 +1,4 @@
-package com.tiendadenacho.admin.user.controller;
+package com.tiendadenacho.admin.user;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,14 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tiendadenacho.admin.AmazonS3Util;
-import com.tiendadenacho.admin.FileUploadUtil;
 import com.tiendadenacho.admin.paging.PagingAndSortingHelper;
 import com.tiendadenacho.admin.paging.PagingAndSortingParam;
-import com.tiendadenacho.admin.user.UserNotFoundException;
-import com.tiendadenacho.admin.user.UserService;
-import com.tiendadenacho.admin.user.export.UserCsvExporter;
-import com.tiendadenacho.admin.user.export.UserExcelExporter;
-import com.tiendadenacho.admin.user.export.UserPdfExporter;
 import com.tiendadenacho.entidades.Role;
 import com.tiendadenacho.entidades.User;
 
@@ -130,6 +124,7 @@ public class UserController {
 	public String updateUserEnabledStatus(@PathVariable("id") Integer id,
 			@PathVariable("status") boolean enabled, 
 			RedirectAttributes redirectAttributes) {
+		
 		service.updateUserEnabledStatus(id, enabled);
 		
 		String status = enabled ? "activado" : "desactivado";

@@ -7,9 +7,7 @@
 	<div>
 		<h2>Gestion Pedidos (Expedidor)</h2>	
 	</div>
-		
 	<div th:replace="fragments :: search_form_and_message" />
-	
 	<div>
 		<th:block th:each="order : ${listOrders}">
 		<div class="row m-1">
@@ -100,7 +98,7 @@
 	var csrfValue = "[[${_csrf.token}]]";
 
 	$(document).ready(function() {
-		$("[name='keyword']").attr("placeholder", "Escribe #Id para buscar pediddo por ID");
+		$("[name='keyword']").attr("placeholder", "#Numero de pedido");
 		handleLinkViewOrderDetails();
 	});
 		

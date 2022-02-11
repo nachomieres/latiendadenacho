@@ -57,45 +57,44 @@
 				</li>
 				</th:block>
 					
-					<th:block sec:authorize="hasAnyAuthority('Admin', 'Gestor')">
+				<th:block sec:authorize="hasAnyAuthority('Admin', 'Gestor')">
 					<li class="nav-item">
 						<a class="nav-link" th:href="@{/customers}">Clientes</a>
 					</li>
-					
-					<th:block sec:authorize="hasAnyAuthority('Admin', 'Gestor', 'Expedidor')">
+				</th:block>		
+				<th:block sec:authorize="hasAnyAuthority('Admin', 'Gestor', 'Editor', 'Expedidor')">
 					<li class="nav-item">
 						<a class="nav-link" th:href="@{/orders}">Pedidos</a>
 					</li>
-					</th:block>
-															
+																			
 					<li class="nav-item">
 						<a class="nav-link" th:href="@{/shipping_rates}">Envio</a>
 					</li>
-					</th:block>
+				</th:block>
 											
-					<li class="nav-item dropdown" sec:authorize="hasAuthority('Admin')">
-						<a class="nav-link dropdown-toggle" data-toggle="dropdown" 
-						th:href="@{/settings}">Ajustes</a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" th:href="@{/settings#general}">General</a>
-							<a class="dropdown-item" th:href="@{/settings#countries}">Paises</a>
-							<a class="dropdown-item" th:href="@{/settings#states}">Provincias</a>
-							<a class="dropdown-item" th:href="@{/settings#mailServer}">Servidor correo</a>
-							<a class="dropdown-item" th:href="@{/settings#mailTemplate}">Plantillas correo</a>
-							<a class="dropdown-item" th:href="@{/settings#payment}">Pagos</a>
-						</div>
-					</li>
-					<li>
-						<span class="fas fa-user fa-2x icon-silver"></span>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" data-toggle="dropdown" 
-							th:href="@{/account}" 
-							sec:authentication="principal.fullname"></a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" id="logoutLink" href="">Logout</a>
-						</div>
-					</li>
+				<li class="nav-item dropdown" sec:authorize="hasAuthority('Admin')">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" 
+					th:href="@{/settings}">Ajustes</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" th:href="@{/settings#general}">General</a>
+						<a class="dropdown-item" th:href="@{/settings#countries}">Paises</a>
+						<a class="dropdown-item" th:href="@{/settings#states}">Provincias</a>
+						<a class="dropdown-item" th:href="@{/settings#mailServer}">Servidor correo</a>
+						<a class="dropdown-item" th:href="@{/settings#mailTemplate}">Plantillas correo</a>
+						<a class="dropdown-item" th:href="@{/settings#payment}">Pagos</a>
+					</div>
+				</li>
+				<li>
+					<span class="fas fa-user fa-2x icon-silver"></span>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" 
+						th:href="@{/account}" 
+						sec:authentication="principal.fullname"></a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" id="logoutLink" href="">Logout</a>
+					</div>
+				</li>
 				</ul>
 			</div>
 		</nav>

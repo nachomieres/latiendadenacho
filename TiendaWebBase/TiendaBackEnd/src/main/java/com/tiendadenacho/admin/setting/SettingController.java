@@ -18,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tiendadenacho.admin.AmazonS3Util;
-import com.tiendadenacho.admin.FileUploadUtil;
 import com.tiendadenacho.common.Constants;
 import com.tiendadenacho.entidades.Currency;
 import com.tiendadenacho.entidades.setting.Setting;

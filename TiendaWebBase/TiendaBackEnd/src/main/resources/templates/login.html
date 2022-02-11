@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<div class="container text-center">
+	<div class="container text-center p-5">
 		<div class="m-4">
 			<img th:src="@{/images/LogoTienda.png}" />
 		</div>
@@ -27,17 +27,17 @@
 		</div>
 		<div class="border border-secondary rounded p-3">
 			<p class="small">Acceso al panel de control de La Tienda de Nacho</p>
-			<p>
+			<p class="mb-4">
 				<input type="email" name="email" class="form-control" placeholder="E-mail" required />
 			</p>
-			<p>
+			<p class="mb-4">
 				<input type="password" name="password" class="form-control" placeholder="Password" required />
 			</p>
-			<p>
-				<input type="checkbox" name="remember-me" /> Recuerdame 
+			<p class="mb-4">
+				<input type="checkbox" name="remember-me" /> Mantener sesion abierta 
 			</p>
 			<p>
-				<input type="submit" value="Login" class="btn btn-primary" />
+				<input type="submit" value="Entrar" class="btn btn-primary" />
 			</p>			
 		</div>
 	</form>

@@ -44,7 +44,7 @@
 					<td class="align-middle">[[${user.apellidos}]]</td>
 					<td class="hideable-column align-middle">[[${user.email}]]</td>
 					<td class="align-middle">[[${user.roles}]]</td>
-					<td class="align-middle"><div th:replace="fragments :: status (${user.enabled}, 'usuario', 'users/' + ${user.id})"></div></td>
+					<td class="align-middle"><div th:replace="fragments :: status (${user.enabled}, 'usuario', '/users/' + ${user.id})"></div></td>
 					<td class="align-middle">
 						<div th:replace="fragments :: edit('usuario', '/users/edit/' + ${user.id})"></div>
 						&nbsp;&nbsp;

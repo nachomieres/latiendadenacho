@@ -1,4 +1,4 @@
-package com.tiendadenacho.admin.user.controller;
+package com.tiendadenacho.admin.user;
 
 import java.io.IOException;
 
@@ -15,7 +15,6 @@ import org.springframework.util.StringUtils;
 
 import com.tiendadenacho.admin.FileUploadUtil;
 import com.tiendadenacho.admin.security.TiendaUserDetails;
-import com.tiendadenacho.admin.user.UserService;
 import com.tiendadenacho.entidades.User;
 
 @Controller

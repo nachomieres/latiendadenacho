@@ -7,6 +7,9 @@ spring:
     password: temporal
     url: jdbc:mysql://localhost:3306/proyecto
     username: root
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 2
   jpa:
     hibernate:
       ddl-auto: update

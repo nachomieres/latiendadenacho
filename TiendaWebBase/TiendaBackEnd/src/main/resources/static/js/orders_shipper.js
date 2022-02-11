@@ -64,7 +64,7 @@ function showUpdateConfirmModal(link) {
 	status = link.attr("status");
 	yesButton.attr("href", link.attr("href"));
 	
-	confirmText.text("Estas seguro de querer cambiar el pedido #" + orderId
+	confirmText.text("¿Estas seguro de querer cambiar el pedido #" + orderId
 					 + " a " + status + "?");
 					 
 	confirmModalDialog.modal();
