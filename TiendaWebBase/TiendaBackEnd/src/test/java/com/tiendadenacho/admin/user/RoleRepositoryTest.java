@@ -21,7 +21,7 @@ public class RoleRepositoryTest {
 
 	@Autowired
 	private RoleRepository repo;
-	/*
+	
 	@Test
 	public void testCreateFirstRole () {
 		Role roleAdmin = new Role ("Admin", "Controla todo");
@@ -39,5 +39,5 @@ public class RoleRepositoryTest {
 		
 		repo.saveAll(List.of(roleGestor, roleEditor, roleEnvios, RoleAsistente));
 		
-	}*/
+	}
 }

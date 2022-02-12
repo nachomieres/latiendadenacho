@@ -5,16 +5,38 @@
 <head th:replace="fragments :: page_head('La Tienda de Nacho - Panel de Control', 'none')"/>
 
 <body>
-	<div class="container">
-		<div th:replace="navigation :: menu"></div>
-		<div class="m-3">
-			<h2>Panel de Control de la Tienda de Nacho</h2>
-			Bienvenid@
-			<a th:href="@{/account}" sec:authentication="principal.fullname"></a>
-			<span sec:authentication="principal.authorities"></span>
-		</div>
-		<div th:replace="fragments :: footer"></div>
-	</div>
+<div th:replace="navigation :: menu"></div>
+<div class="container">
+	<div class="p-5 my-4 bg-light rounded-3">
+		<h2>Panel de Control de la Tienda de Nacho</h2>
+		<p class="lead">Bienvenid@ <a th:href="@{/account}" sec:authentication="principal.fullname"></a></p>
+		<p>Este es el panel de control de administracion de la Tienda de Nacho. En funcion de tu nivel de autorizacion podrás ver distintos menus.</p>
+		<p>Existen 4 niveles: </p>
+		<ul>
+			<li>Admin</li>
+			<li>Editor</li>
+			<li>Gestor</li>
+			<li>Expedidor</li>
+		</ul>
+		
+		<th:block sec:authorize="hasAuthority('Admin')">
+		<p>Desde la seccion <a  th:href="@{/users}">Usuarios</a>, se puede gestionar los distintos usuarios del sistema, asignarles Roles y modificar sus datos personales y de acceso.</a></p>
+		<p>La seccion <a th:href="@{/settings}">Ajustes</a> sirve para modificar la confifguracion de la Tienda, nombre y logo de ésta, formatos numericos, moneda en la que se muestran los precios, texto de los correos de registroy confirmacion de compra y recuperacion de contraseña</p>
+		</th:block>
+
+		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+		<p>La seccion <a th:href="@{/categories}">Categorias</a> y <a th:href="@{/brands}">Marcas</a> sirve para gestionar dichas categorias.</p>
+		<p>La seccion <a th:href="@{/customers}">Clientes</a> permite gestionar los clientes de la tienda, modificar sus datos y borrarlos.</p>
+		</th:block>
+
+		<th:block sec:authorize="hasAnyAuthority('Admin', 'Gestor', 'Editor', 'Expedidor')">
+		<p>La seccion <a th:href="@{/products}">Productos</a> tiene una funcionalidad es limitada en funcion del perfil. </p>
+		<p>La seccion <a th:href="@{/orders}">Pedidos</a> nos muestra los pedidos realizados a la tienda.</p>
+		<p>La seccion <a th:href="@{/shipping_rates}">Envio</a> nos permite crear tarifas de envio en funcion del lugar al que se envie.</p>
+		</th:block>	
+	</div>	
+	<div th:replace="fragments :: footer"></div>
+</div>
 	
 <script type="text/javascript">
 	$(document).ready(function () {

@@ -7,13 +7,15 @@
 	<title>[[${title}]]</title>
 
 	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+	<!-- <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" /> -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Roboto:wght@300&display=swap" rel="stylesheet">
 	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<!-- <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/common.js}"></script>
 </head>
 
@@ -39,19 +41,19 @@
 </div>
 
 <div th:fragment="status(enabled, entityName, entityURL)" th:remove="tag">
-	<a th:if="${enabled == true}" class="fas fa-check-circle fa-2x icon-green" 
+	<a th:if="${enabled == true}" class="fa fa-check-circle fa-2x icon-green" 
 		th:href="@{${entityURL} + '/enabled/false'}"
 		th:title="'Desactivar ' + ${entityName}">
 	</a>
-	<a th:if="${enabled == false}" class="fas fa-circle fa-2x icon-dark" 
+	<a th:if="${enabled == false}" class="fa fa-circle fa-2x icon-dark" 
 		th:href="@{${entityURL} + '/enabled/true'}"
 		th:title="'Activar ' + ${entityName}">
 	</a>	
 </div>
 
 <div th:fragment="edit(entityName, editURL)" th:remove="tag">
-	<a class="fas fa-edit fa-2x icon-green" th:href="@{${editURL}}"
-		th:title="'Editar ' + ${entityName}"></a>
+	<a class="fa fa-edit fa-2x icon-green" th:href="@{${editURL}}"
+		th:title="'Editar ' + ${entityName}"><i class="fa-solid fa-circle-check"></i></a>
 </div>
 
 <div th:fragment="delete(entityName, entityId, deleteURL, visible)" th:remove="tag">
@@ -63,8 +65,9 @@
 	</th:block>	
 </div>
 
-<div th:fragment="footer" class="text-center">
-	<p>Panel de Control de LTN - Copyright &copy; Nacho</p>
+<div th:fragment="footer">
+	<hr>
+	<p>Panel de Control de LTN - Copyright  &copy; 2022 Nacho</p>
 </div>
 	
 <div th:fragment="pagination (entityName)" th:remove="tag">
@@ -113,11 +116,11 @@
 		<input type="search" name="keyword" th:value="${keyword}" class="form-control m-2" required/>
 		&nbsp;&nbsp;
 		<button type="submit" class="btn btn-secondary">
-			<i class="fas fa-search"></i>
+			<i class="fa fa-search"></i>
 		</button>
 		&nbsp;&nbsp;
 		<button type="button" class="btn btn-secondary" onclick="clearFilter()">
-			<i class="fas fa-eraser"></i>
+			<i class="fa fa-eraser"></i>
 		</button>
 	</form>
 	<div th:if="${message != null}"	class="alert alert-success text-center">[[${message}]]</div>

@@ -66,7 +66,7 @@ public class UserService {
 	}
 	
 	public User updateAccount (User userInForm) {
-User userInDB = userRepo.findById(userInForm.getId()).get();
+		User userInDB = userRepo.findById(userInForm.getId()).get();
 		
 		if (!userInForm.getPassword().isEmpty()) {
 			userInDB.setPassword(userInForm.getPassword());
