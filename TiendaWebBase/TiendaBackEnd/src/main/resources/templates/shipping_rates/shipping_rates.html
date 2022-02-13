@@ -3,7 +3,7 @@
 <head th:replace="fragments :: page_head('Tarifas de envio', 'none')" />
 <body>
 <div th:replace="navigation :: menu"></div>
-<div class="container">
+<div class="container-xl">
 	<div>
 		<h2>Gestion tarifas envio</h2>			
 		<a th:href="@{/shipping_rates/new}" class="fas fa-folder-plus fa-2x icon-dark mr-2"></a>
@@ -12,7 +12,7 @@
 	<div th:replace="fragments :: search_form_and_message" />
 	
 	<div class="full-details">
-		<table class="table table-bordered table-striped table-hover table-responsive-xl">
+		<table class="table table-bordered table-striped table-hover text-center">
 			<thead class="thead-dark">
 				<tr>
 					<th th:replace="fragments :: column_link('id', 'ID', 'none')" />

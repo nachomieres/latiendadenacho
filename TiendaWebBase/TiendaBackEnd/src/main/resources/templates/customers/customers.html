@@ -11,7 +11,7 @@
 	<div th:replace="fragments :: search_form_and_message" />
 	
 	<div class="full-details">
-		<table class="table table-bordered table-striped table-hover table-responsive-xl text-center">
+		<table class="table table-bordered table-striped table-hover text-center">
 			<thead class="thead-dark">
 				<tr>
 					<th th:replace="fragments :: column_link('id', 'ID', 'none')" />
@@ -31,7 +31,6 @@
 					</th>
 					
 					<th th:replace="fragments :: column_link('country', 'Pais', 'none')" />
-					<th th:replace="fragments :: column_link('enabled', 'Activo', 'none')" />
 					<th>Acciones</th>
 				</tr>								
 			</thead>
@@ -50,10 +49,9 @@
 					<td>[[${customer.country.name}]]</td>
 					<td>
 						<div th:replace="fragments :: status(${customer.enabled}, 'cliente', '/customers/' + ${customer.id})" />
-					</td>
-					<td>
+						&nbsp;&nbsp;
 						<div th:replace="fragments :: edit('cliente', '/customers/edit/' + ${customer.id})" />
-						&nbsp; 
+						&nbsp;&nbsp;
 						<div th:replace="fragments :: delete('cliente', ${customer.id}, '/customers/delete/' + ${customer.id}, true)" />						
 					</td>					
 				</tr>

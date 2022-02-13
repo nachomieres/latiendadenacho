@@ -3,7 +3,7 @@
 <head th:replace="fragments :: page_head('Pedidos', 'none')" />
 <body>
 <div th:replace="navigation :: menu"></div>
-<div class="container">
+<div class="container-xl">
 	<div>
 		<h2>Gestion Pedidos</h2>	
 	</div>
@@ -11,7 +11,7 @@
 	<div th:replace="fragments :: search_form_and_message" />
 	
 	<div class="full-details">
-		<table class="table table-bordered table-striped table-hover table-responsive-xl text-center">
+		<table class="table table-bordered table-striped table-hover text-center">
 			<thead class="thead-dark">
 				<tr>
 					<th th:replace="fragments :: column_link('id', 'ID', 'none')" />
@@ -22,13 +22,13 @@
 						<th th:replace="fragments :: column_link('destination', 'Destino', 'tag')" />
 					</th>
 					<th class="hideable-column">
-						<th th:replace="fragments :: column_link('paymentMethod', 'Metodo de pago', 'tag')" />
+						<th th:replace="fragments :: column_link('paymentMethod', 'Pago', 'tag')" />
 					</th>
 					<th class="hideable-column">
 						<th th:replace="fragments :: column_link('status', 'Estado', 'tag')" />
 					</th>
 					
-					<th></th>
+					<th>Acciones</th>
 				</tr>								
 			</thead>
 			<tbody>
@@ -40,7 +40,9 @@
 						</a>
 					</td>
 					<td>
-						<div th:replace="fragments :: format_currency(${order.total})"></div>
+					<a class="linkOrderDetail"
+							th:href="@{'/orders/detail/' + ${order.id}}"
+							title="Ver detalles del pedido"><div th:replace="fragments :: format_currency(${order.total})"></div></a>
 					</td>
 					<td>
 						<div th:replace="fragments :: format_time(${order.orderTime})"></div>
@@ -50,11 +52,6 @@
 					<td class="hideable-column">[[${order.status}]]</td>
 
 					<td>
-						<a class="fas fa-file-alt fa-2x icon-green linkOrderDetail"
-							th:href="@{'/orders/detail/' + ${order.id}}"
-							title="Ver detalles del pedido"
-							></a>					
-						&nbsp; 
 						<div th:replace="fragments :: edit('pedido', '/orders/edit/' + ${order.id})" />
 						&nbsp; 
 						<div th:replace="fragments :: delete('pedido', ${order.id}, '/orders/delete/' + ${order.id}, true)" />						
@@ -77,8 +74,7 @@
 				<div>
 					<a class="fas fa-file-alt fa-2x icon-green linkOrderDetail"
 						th:href="@{'/orders/detail/' + ${order.id}}"
-						title="Ver detalles del pedido"
-						></a>					
+						title="Ver detalles del pedido"></a>					
 					&nbsp; 
 					<div th:replace="fragments :: edit('pedido', '/orders/edit/' + ${order.id})" />
 					&nbsp; 

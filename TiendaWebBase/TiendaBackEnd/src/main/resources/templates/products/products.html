@@ -3,7 +3,7 @@
 <head th:replace="fragments :: page_head('Productos', 'none')" />
 <body>
 <div th:replace="navigation :: menu"></div>
-<div class="container">
+<div class="container-xl">
 	<div>
 		<h2>Gestion Productos</h2>	
 		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
@@ -44,29 +44,20 @@
 	</div>
 	
 	<div class="full-details">
-		<table class="table table-bordered table-striped table-hover table-responsive-xl text-center">
+		<table class="table table-bordered table-striped table-hover text-center">
 			<thead class="thead-dark">
 				<tr>
 					<th class="hideable-column">
 					<th th:replace="fragments :: column_link('id', 'ID', 'tag')" />
-					</th>
-					
-					<th>Imagen Principal</th>				
-					
-					<th th:replace="fragments :: column_link('name', 'Nombre', 'none')" />
-					
+					</th>					
+					<th>Imagen Principal</th>								
+					<th th:replace="fragments :: column_link('name', 'Nombre', 'none')" />					
 					<th class="hideable-column">
-						<th th:replace="fragments :: column_link('brand', 'Marca', 'tag')" />
-					</th>
-					
+					<th th:replace="fragments :: column_link('brand', 'Marca', 'tag')" />
+					</th>					
 					<th class="hideable-column">
 					<th th:replace="fragments :: column_link('category', 'Categoria', 'tag')" />
-					</th>
-					
-					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
-						<th>Activo</th>
-					</th:block>
-					
+					</th>														
 					<th>Acciones</th>
 				</tr>								
 			</thead>
@@ -83,12 +74,10 @@
 					</td>
 					<td class="hideable-column" >[[${product.brand.name}]]</td>
 					<td class="hideable-column">[[${product.category.name}]]</td>					
-					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
-						<td>
-							<div th:replace="fragments :: status (${product.enabled}, 'producto', '/products/' + ${product.id})"></div>
-						</td>
-					</th:block>
 					<td>
+						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+							<div th:replace="fragments :: status (${product.enabled}, 'producto', '/products/' + ${product.id})"></div>
+						</th:block>
 						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Gestor')">
 							&nbsp;
 							<div th:replace="fragments :: edit('producto', '/products/edit/' + ${product.id})" />
@@ -116,11 +105,10 @@
 					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 						<div th:replace="fragments :: status (${product.enabled}, 'producto', '/products/' + ${product.id})"></div>						
 					</th:block>	
-					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson')">
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Gestor')">
 					&nbsp; 	
 					<div th:replace="fragments :: edit('product', '/products/edit/' + ${product.id})" />
-					</th:block>
-					
+					</th:block>					
 					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 					&nbsp; 
 					<div th:replace="fragments :: delete('product', ${product.id}, '/products/delete/' + ${product.id}, true)" />

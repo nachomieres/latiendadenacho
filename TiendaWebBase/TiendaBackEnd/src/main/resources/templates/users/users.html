@@ -5,7 +5,7 @@
 
 <body>
 <div th:replace="navigation :: menu"></div>
-<div class="container">	
+<div class="container-xl">	
 	<div>
 		<h2>Gestion de Usuarios</h2>
 		<a th:href="@{/users/new}" class="fas fa-user-plus fa-2x icon-dark mr-2"></a>		
@@ -18,8 +18,8 @@
 
 	<div class="full-details">
 		<table
-			class="table table-bordered table-striped table-responsive-xl">
-			<thead class="thead-dark text-center">
+			class="table table-bordered table-striped text-center">
+			<thead class="thead-dark">
 				<tr>
 					<th class="hideable-column">
 						<th th:replace="fragments :: column_link('id', 'ID', 'tag')">
@@ -30,21 +30,21 @@
 					<th class="hideable-column">
 						<th th:replace="fragments :: column_link('email', 'E-mail', 'tag')">
 					</th>
-					<th>Roles</th>
-					<th th:replace="fragments :: column_link('enabled', 'Activo', 'none')" />
+					<th>Roles</th>					
 					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="user : ${listUsers}" class="text-center">
-					<td class="hideable-column align-middle">[[${user.id}]]</td>
-					<td class="align-center"><div th:replace="fragments :: user_photos"></div></td>
-					<td class="align-middle">[[${user.nombre}]]</td>
-					<td class="align-middle">[[${user.apellidos}]]</td>
-					<td class="hideable-column align-middle">[[${user.email}]]</td>
-					<td class="align-middle">[[${user.roles}]]</td>
-					<td class="align-middle"><div th:replace="fragments :: status (${user.enabled}, 'usuario', '/users/' + ${user.id})"></div></td>
-					<td class="align-middle">
+					<td class="hideable-column">[[${user.id}]]</td>
+					<td><div th:replace="fragments :: user_photos"></div></td>
+					<td>[[${user.nombre}]]</td>
+					<td>[[${user.apellidos}]]</td>
+					<td class="hideable-column">[[${user.email}]]</td>
+					<td>[[${user.roles}]]</td>					
+					<td>
+						<div th:replace="fragments :: status (${user.enabled}, 'usuario', '/users/' + ${user.id})"></div>
+						&nbsp;&nbsp;
 						<div th:replace="fragments :: edit('usuario', '/users/edit/' + ${user.id})"></div>
 						&nbsp;&nbsp;
 						<div th:replace="fragments :: delete('usuario', ${user.id}, '/users/delete/' + ${user.id}, true)"></div>

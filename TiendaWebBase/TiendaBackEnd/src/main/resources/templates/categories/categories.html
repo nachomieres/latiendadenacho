@@ -3,7 +3,7 @@
 <head th:replace="fragments :: page_head('Categorias', 'none')" />
 <body>
 <div th:replace="navigation :: menu"></div>
-<div class="container">
+<div class="container-xl">
 	<div>
 		<h2>Gestion de Categorias</h2>
 
@@ -17,15 +17,13 @@
 	<div th:replace="fragments :: search_form_and_message"></div>
 
 	<div class="full-details">
-		<table class="table table-bordered table-striped table-hover table-responsive-xl text-center">
+		<table class="table table-bordered table-striped table-hover text-center">
 			<thead class="thead-dark">
 				<tr>
 					<th>ID</th>
 					<th>Imagen</th>
-					<th
-						th:replace="fragments :: column_link('name', 'Nombre', 'none')" />
-					<th class="hideable-column">Alias</th>
-					<th>Activo</th>
+					<th	th:replace="fragments :: column_link('name', 'Nombre', 'none')" />
+					<th class="hideable-column">Alias</th>					
 					<th>Acciones</th>
 				</tr>
 			</thead>
@@ -36,15 +34,11 @@
 					<td>[[${cat.name}]]</td>
 					<td class="hideable-column">[[${cat.alias}]]</td>
 					<td>
-						<div
-							th:replace="fragments :: status (${cat.enabled}, 'categoria', 'categories/' + ${cat.id})"></div>
-					</td>
-					<td>
-						<div
-							th:replace="fragments :: edit('categoria', '/categories/edit/' + ${cat.id})"></div>
+						<div th:replace="fragments :: status (${cat.enabled}, 'categoria', 'categories/' + ${cat.id})"></div>
 						&nbsp;&nbsp;
-						<div
-							th:replace="fragments :: delete('categoria', ${cat.id}, '/categories/delete/' + ${cat.id}, ${!cat.hasChildren})"></div>
+						<div th:replace="fragments :: edit('categoria', '/categories/edit/' + ${cat.id})"></div>
+						&nbsp;&nbsp;
+						<div th:replace="fragments :: delete('categoria', ${cat.id}, '/categories/delete/' + ${cat.id}, ${!cat.hasChildren})"></div>
 					</td>
 				</tr>
 			</tbody>
@@ -60,14 +54,11 @@
 			<div class="col-8">
 				<div>[[${cat.name}]]</div>
 				<div class="mt-2">
-					<div
-						th:replace="fragments :: status (${cat.enabled}, 'categoria', 'categories/' + ${cat.id})"></div>
+					<div th:replace="fragments :: status (${cat.enabled}, 'categoria', 'categories/' + ${cat.id})"></div>
 					&nbsp;
-					<div
-						th:replace="fragments :: edit('categoria', '/categories/edit/' + ${cat.id})"></div>
+					<div th:replace="fragments :: edit('categoria', '/categories/edit/' + ${cat.id})"></div>
 					&nbsp;&nbsp;
-					<div
-						th:replace="fragments :: delete('categoria', ${cat.id}, '/categories/delete/' + ${cat.id}, ${!cat.hasChildren})"></div>
+					<div th:replace="fragments :: delete('categoria', ${cat.id}, '/categories/delete/' + ${cat.id}, ${!cat.hasChildren})"></div>
 				</div>
 			</div>
 			<div>&nbsp;</div>
