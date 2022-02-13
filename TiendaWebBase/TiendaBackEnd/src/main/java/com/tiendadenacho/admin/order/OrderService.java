@@ -72,7 +72,7 @@ public class OrderService {
 	}
 
 	public List<Country> listAllCountries() {
-		return countryRepo.findAllByOrderByNameAsc();
+		return countryRepo.findAllByOrderByIdAsc();
 	}
 
 	public void save(Order orderInForm) {

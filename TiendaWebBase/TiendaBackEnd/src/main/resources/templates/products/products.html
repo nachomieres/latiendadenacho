@@ -67,14 +67,14 @@
 						<th>Activo</th>
 					</th:block>
 					
-					<th></th>
+					<th>Acciones</th>
 				</tr>								
 			</thead>
 			<tbody>
 				<tr th:each="product : ${listProducts}">
 					<td class="hideable-column">[[${product.id}]]</td>
 					<td>
-						<img th:src="@{${product.mainImagePath}}" style="max-height: 150px;" class="img-fluid" />
+						<img th:src="@{${product.mainImagePath}}" style="max-height: 150px;" class="img-fluid img-thumbnail rounded" />
 					</td>
 					<td>
 						<a class="link-detail"
@@ -89,9 +89,6 @@
 						</td>
 					</th:block>
 					<td>
-						<a class="fas fa-file-alt fa-2x icon-green link-detail" 
-							th:href="@{'/products/detail/' + ${product.id}}"
-							title="Ver detalles del producto"></a>
 						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Gestor')">
 							&nbsp;
 							<div th:replace="fragments :: edit('producto', '/products/edit/' + ${product.id})" />
@@ -115,11 +112,10 @@
 				<div>
 					<a class="link-detail" th:href="@{'/products/detail/' + ${product.id}}">[[${product.shortName}]]</a>				
 				</div>
-				<div class="mt-2">
-					<a class="fas fa-file-alt fa-2x icon-green link-detail"
-						th:href="@{'/products/detail/' + ${product.id}}"
-						></a>
-						
+				<div class="mt-2">										
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+						<div th:replace="fragments :: status (${product.enabled}, 'producto', '/products/' + ${product.id})"></div>						
+					</th:block>	
 					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson')">
 					&nbsp; 	
 					<div th:replace="fragments :: edit('product', '/products/edit/' + ${product.id})" />

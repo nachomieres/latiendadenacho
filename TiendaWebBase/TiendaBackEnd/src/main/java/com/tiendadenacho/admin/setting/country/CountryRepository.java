@@ -9,4 +9,6 @@ import com.tiendadenacho.entidades.Country;
 
 public interface CountryRepository extends CrudRepository<Country, Integer> {
 	public List<Country> findAllByOrderByNameAsc();
+
+	public List<Country> findAllByOrderByIdAsc();
 }

@@ -60,7 +60,7 @@ function deleteState() {
 	}).done(function() {
 		$("#dropDownStates option[value='" + stateId + "']").remove();
 		changeFormStateToNew();
-		showToastMessage("La Provincia / Estado se ha borrado");
+		showToastMessage("La Provincia se ha borrado");
 	}).fail(function() {
 		showToastMessage("ERROR: no se puede conectar con el servidor");
 	});			
@@ -126,7 +126,7 @@ function addState() {
 		contentType: 'application/json'
 	}).done(function(stateId) {
 		selectNewlyAddedState(stateId, stateName);
-		showToastMessage("La Provincia / Estado se ha añadido");
+		showToastMessage("La Provincia se ha añadido");
 	}).fail(function() {
 		showToastMessage("ERROR: no se puede conectar con el servidor");
 	});
@@ -143,7 +143,7 @@ function selectNewlyAddedState(stateId, stateName) {
 
 function changeFormStateToNew() {
 	buttonAddState.val("Añadir");
-	labelStateName.text("Provincia / Estado:");
+	labelStateName.text("Provincia:");
 	
 	buttonUpdateState.prop("disabled", true);
 	buttonDeleteState.prop("disabled", true);
@@ -156,7 +156,7 @@ function changeFormStateToSelectedState() {
 	buttonUpdateState.prop("disabled", false);
 	buttonDeleteState.prop("disabled", false);
 	
-	labelStateName.text("Provincia / Estado seleccionado:");
+	labelStateName.text("Provincia seleccionado:");
 	
 	selectedStateName = $("#dropDownStates option:selected").text();
 	fieldStateName.val(selectedStateName);
@@ -177,7 +177,7 @@ function loadStates4Country() {
 		
 	}).done(function() {
 		changeFormStateToNew();
-		showToastMessage("Todas las Provincias / Estados cargados para " + selectedCountry.text());
+		showToastMessage("Todas las Provincias cargados para " + selectedCountry.text());
 	}).fail(function() {
 		showToastMessage("ERROR: no se puede conectar con el servidor");
 	});	
@@ -195,6 +195,7 @@ function loadCountries4States() {
 	}).done(function() {
 		buttonLoad4States.val("Actualizar lista de paises");
 		showToastMessage("Lista de paises cargada");
+		loadStates4Country();
 	}).fail(function() {
 		showToastMessage("ERROR: no se puede conectar con el servidor");
 	});

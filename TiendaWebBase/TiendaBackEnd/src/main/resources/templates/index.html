@@ -21,7 +21,7 @@
 		
 		<th:block sec:authorize="hasAuthority('Admin')">
 		<p>Desde la seccion <a  th:href="@{/users}">Usuarios</a>, se puede gestionar los distintos usuarios del sistema, asignarles Roles y modificar sus datos personales y de acceso.</a></p>
-		<p>La seccion <a th:href="@{/settings}">Ajustes</a> sirve para modificar la confifguracion de la Tienda, nombre y logo de ésta, formatos numericos, moneda en la que se muestran los precios, texto de los correos de registroy confirmacion de compra y recuperacion de contraseña</p>
+		<p>La seccion <a th:href="@{/settings}">Ajustes</a> sirve para modificar la confifguracion de la Tienda, nombre y logo de ésta, formatos numericos, moneda en la que se muestran los precios, texto de los correos de registro y confirmacion de compra y recuperacion de contraseña</p>
 		</th:block>
 
 		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
