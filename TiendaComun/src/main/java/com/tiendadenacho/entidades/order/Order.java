@@ -219,8 +219,8 @@ public class Order extends AbstractAddress  {
 		
 		address += ", " + country;
 		
-		if (!postalCode.isEmpty()) address += ". Postal Code: " + postalCode;
-		if (!phoneNumber.isEmpty()) address += ". Phone Number: " + phoneNumber;
+		if (!postalCode.isEmpty()) address += ". Codigo postal: " + postalCode;
+		if (!phoneNumber.isEmpty()) address += ". Telefono: " + phoneNumber;
 		
 		return address;
 	}	

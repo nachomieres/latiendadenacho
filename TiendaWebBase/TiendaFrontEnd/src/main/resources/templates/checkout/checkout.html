@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: page_head('Tu compra', 'none')" />
 <body>
-<div class="container">
-	<div th:replace="navigation :: header_menu"></div>
-	<div th:replace="navigation :: search_nav"></div>
+<div th:replace="navigation :: header_menu"></div>
+<div th:replace="navigation :: search_nav"></div>
+<div class="container-xl">
 
 	<div class="text-center">
 		<h2>Tu compra</h2>
@@ -13,7 +13,7 @@
 	<div class="row m-1">
 		<div class="col-sm-8">
 			<div class="card">
-				<div class="card-header"><h5>Informacion de envio</h5></div>
+				<div class="card-header"><h5>Direccion de envio</h5></div>
 				<div class="card-body">					
 					<p>
 						<b>Enviar a:</b>&nbsp; [[${shippingAddress}]]
@@ -57,13 +57,13 @@
 					<table>
 						<th:block th:each="item : ${cartItems}">
 						<tr th:with="product = ${item.product}">
-							<td>[[${item.quantity}]] X &nbsp;&nbsp;</td>
+							<td>[[${item.quantity}]] X</td>
 							<td width="70%">
-								<a th:href="@{'/p/' + ${product.alias}}" target="_blank">
+								&nbsp;<a th:href="@{'/p/' + ${product.alias}}" target="_blank">
 									[[${product.shortName}]]
 								</a>
 								<br/>
-								<small>Envio: <div th:replace="fragments :: format_currency(${item.shippingCost})"></div></small>
+								&nbsp;<small>Envio: <div th:replace="fragments :: format_currency(${item.shippingCost})"></div></small>
 							</td>
 							<td>
 								<div th:replace="fragments :: format_currency(${item.subtotal})">
@@ -86,8 +86,8 @@
 							
 					<div class="row mt-2">
 						<div class="col">Total a pagar: </div>
-<!-- 						<div class="col"><b><div th:replace="fragments :: format_currency(${checkoutInfo.paymentTotal})"></div></b></div> -->
-							<div class="col"><b><span>[[${checkoutInfo.paymentTotal}]]</span></div></b></div>
+						<div class="col"><b><div th:replace="fragments :: format_currency(${checkoutInfo.paymentTotal})"></div></b></div>
+						<!-- <div class="col"><b><span>[[${checkoutInfo.paymentTotal}]]</span></div></b></div> -->
 					</div>
 				</div>
 			</div>
