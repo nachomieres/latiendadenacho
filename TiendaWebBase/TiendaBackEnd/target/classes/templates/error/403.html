@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.tymeleaf.org"
+	xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="fragments :: page_head('Error - Panel de Control', 'none')"/>
+
+<body>
+	<div th:replace="navigation :: menu"></div>
+	<div class="container">
+		<div class="m-3 text-center">
+			<h2>Ha ocurrido un error al procesar la peticion...</h2>
+			<h3>No estas autorizado a entrar en esta pagina</h3>
+			
+		</div>
+		<div th:replace="fragments :: footer"></div>
+	</div>
+</body>
+</html>

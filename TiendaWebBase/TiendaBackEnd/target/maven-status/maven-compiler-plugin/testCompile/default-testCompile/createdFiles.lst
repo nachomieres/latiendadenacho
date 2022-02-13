@@ -1,0 +1,10 @@
+com/tiendadenacho/admin/AmazonS3UtilTest.class
+com/tiendadenacho/admin/user/RoleRepositoryTest.class
+com/tiendadenacho/admin/category/CategoryRepositoryTests.class
+com/tiendadenacho/admin/setting/CurrencyRepositoryTests.class
+com/tiendadenacho/admin/setting/SettingRepositoryTests.class
+com/tiendadenacho/admin/brand/BrandRepositoryTests.class
+com/tiendadenacho/admin/setting/country/CountryRestControllerTest.class
+com/tiendadenacho/admin/order/OrderRepositoryTests.class
+com/tiendadenacho/admin/user/UserRepositoryTests.class
+com/tiendadenacho/admin/product/ProductRepositoryTests.class

@@ -1,0 +1,10 @@
+/Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd/src/test/java/com/tiendadenacho/admin/AmazonS3UtilTest.java
+/Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd/src/test/java/com/tiendadenacho/admin/product/ProductRepositoryTests.java
+/Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd/src/test/java/com/tiendadenacho/admin/setting/SettingRepositoryTests.java
+/Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd/src/test/java/com/tiendadenacho/admin/order/OrderRepositoryTests.java
+/Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd/src/test/java/com/tiendadenacho/admin/setting/CurrencyRepositoryTests.java
+/Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd/src/test/java/com/tiendadenacho/admin/setting/country/CountryRestControllerTest.java
+/Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd/src/test/java/com/tiendadenacho/admin/user/UserRepositoryTests.java
+/Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd/src/test/java/com/tiendadenacho/admin/brand/BrandRepositoryTests.java
+/Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd/src/test/java/com/tiendadenacho/admin/user/RoleRepositoryTest.java
+/Users/nachogonzalez/LaTiendinaDeNacho/ ProyectoTienda/TiendaWebBase/TiendaBackEnd/src/test/java/com/tiendadenacho/admin/category/CategoryRepositoryTests.java

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.tymeleaf.org"
+	xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="fragments :: page_head('Error - Panel de Control', 'none')"/>
+
+<body>
+	<div class="container">
+		<div th:replace="navigation :: menu"></div>
+		<div class="m-3">
+			<h2>Ha ocurrio un error inesperado...</h2>
+		</div>
+		<div th:replace="fragments :: footer"></div>
+	</div>
+</body>
+</html>
