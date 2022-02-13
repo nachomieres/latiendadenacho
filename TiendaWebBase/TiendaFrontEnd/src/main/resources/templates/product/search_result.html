@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: page_head(${pageTitle}, 'none')" />
 <body>
+<div th:replace="navigation :: header_menu"></div>
+<div th:replace="navigation :: search_nav"></div>
 <div class="container">
-	<div th:replace="navigation :: header_menu"></div>
-	<div th:replace="navigation :: search_nav"></div>
 	
 	<div th:if="${totalItems > 0}">
 		<h2>Resultados de la busquda de: '[[${keyword}]]'</h2>

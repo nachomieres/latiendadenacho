@@ -47,12 +47,13 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<b>[[${customer.firstName}]] [[${customer.lastName}]]</b><br>
+					<span class="lead">[[${customer.firstName}]] [[${customer.lastName}]]</span><br>
 					[[${customer.addressLine1}]]<br>
 					<th:block th:if="${customer.addressLine2 != ''}">
 						[[${customer.addressLine2}]]<br>
 					</th:block>	
 					[[${customer.city}]] - [[${customer.postalCode}]]<br>
+					[[${customer.phoneNumber}]]<br>
 					[[${customer.state}]]<br>
 					[[${customer.country.name}]]<br>										 
 				</div>
