@@ -4,8 +4,8 @@
 <head th:replace="fragments :: page_head (${pageTitle}, 'none')"/>
 
 <body>
-<div class="container">
-	<div th:replace="navigation :: menu"></div>
+<div th:replace="navigation :: menu"></div>
+<div class="container-xl">
 	<div>
 		<h2>Gestion de Marcas | [[${pageTitle}]]</h2>
 	</div>
@@ -28,8 +28,7 @@
 				<div class="col-sm-8">
 					<input type="hidden" th:field="*{logo}" />
 					<input type="file" id="fileImage" name="fileImage" accept="image/png, image/jpeg" 
-					 	th:required="${brand.id == null}" class="mb-2 form-control-file" />
-					 	
+						th:required="${brand.id == null}" class="mb-2 form-control-file" />
 					<div class="mb-2">
 						<img id="thumbnail" alt="Imagen de la categoria" width="100px"
 							th:src="@{${brand.logoPath}}" class="img-fluid" />
@@ -116,11 +115,8 @@
 		}).fail(function() {
 			showErrorModal("No se puede conectar con el servidor");
 		});
-		
 		return false;
 	}
-	
-		
 </script>
 <script th:src="@{/js/common_form.js}"></script>
 </body>

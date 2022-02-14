@@ -2,17 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: page_head(${pageTitle}, 'none')" />
 <body>
-<div class="container">
-	<div th:replace="navigation :: menu"></div>
-	
+<div th:replace="navigation :: menu"></div>
+<div class="container-xl">
 	<div>
 		<h2>Gestion de Clientes | [[${pageTitle}]]</h2>
 	</div>
-		
 	<form th:action="@{/customers/save}" th:object="${customer}" method="post"
 		style="max-width: 600px; margin:  0 auto;"
-		onsubmit="return checkEmailUnique(this);"
-		>
+		onsubmit="return checkEmailUnique(this);">
 		<input type="hidden" th:field="*{id}" />
 	<div class="border border-secondary rounded p-3">
 	  <div class="form-group row">

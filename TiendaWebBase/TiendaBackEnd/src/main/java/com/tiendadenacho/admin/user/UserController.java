@@ -110,8 +110,7 @@ public class UserController {
 		try {
 			service.delete(id);			
 			String userPhotosDir = "user-photos/" + id;
-			AmazonS3Util.removeFolder(userPhotosDir);
-			
+			AmazonS3Util.removeFolder(userPhotosDir);			
 			redirectAttributes.addFlashAttribute("message", "El usuario Id " + id  +" ha sido borrado correctamente.");
 		}
 		catch (UserNotFoundException e) {

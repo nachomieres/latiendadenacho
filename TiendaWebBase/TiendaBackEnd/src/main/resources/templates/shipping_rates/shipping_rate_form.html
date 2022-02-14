@@ -2,13 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: page_head(${pageTitle}, 'none')" />
 <body>
-<div class="container">
-	<div th:replace="navigation :: menu"></div>
-	
+<div th:replace="navigation :: menu"></div>
+<div class="container">	
 	<div>
 		<h2>Gestion tarifa de envio | [[${pageTitle}]]</h2>
-	</div>
-		
+	</div>		
 	<form th:action="@{/shipping_rates/save}" th:object="${rate}" method="post"
 		style="max-width: 780px; margin:  0 auto;">
 		<input type="hidden" th:field="*{id}" />

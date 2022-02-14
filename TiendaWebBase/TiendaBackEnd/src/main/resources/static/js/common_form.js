@@ -45,5 +45,5 @@ function showErrorModal(message) {
 }
 
 function showWarningModal(message) {
-	showModalDialog("Advertencia", message);
+	showModalDialog("Aviso", message);
 }

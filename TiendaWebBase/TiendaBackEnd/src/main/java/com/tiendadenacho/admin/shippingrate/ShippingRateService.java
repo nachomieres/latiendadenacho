@@ -30,7 +30,7 @@ public class ShippingRateService {
 	}	
 	
 	public List<Country> listAllCountries() {
-		return countryRepo.findAllByOrderByNameAsc();
+		return countryRepo.findAllByOrderByIdAsc();
 	}		
 	
 	public void save(ShippingRate rateInForm) throws ShippingRateAlreadyExistsException {

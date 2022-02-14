@@ -25,11 +25,11 @@ function addNextDetailSection() {
 
 	previousDivDetailSection = allDivDetails.last();
 	previousDivDetailID = previousDivDetailSection.attr("id");
-	 	
+
 	htmlLinkRemove = `
 		<a class="btn fas fa-times-circle fa-2x icon-dark"
 			href="javascript:removeDetailSectionById('${previousDivDetailID}')"
-			title="Borrar este detallel"></a>
+			title="Borrar este detalle"></a>
 	`;
 	
 	previousDivDetailSection.append(htmlLinkRemove);

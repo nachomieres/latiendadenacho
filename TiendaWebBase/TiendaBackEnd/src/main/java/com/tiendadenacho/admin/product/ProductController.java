@@ -130,7 +130,6 @@ public class ProductController {
 			FileUploadUtil.removeDir(productExtraImagesDir);
 			FileUploadUtil.removeDir(productImagesDir);
 			
-
 			redirectAttributes.addFlashAttribute("message",
 					"El producto con ID  " + id + " ha sido borrado correctamente");
 		} catch (ProductNotFoundException ex) {

@@ -32,7 +32,7 @@
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Gestor')">
 					<a class="nav-item nav-link" th:href="@{/customers}">Clientes</a>					
 				</th:block>		
-				<th:block sec:authorize="hasAnyAuthority('Admin', 'Gestor', 'Editor', 'Expedidor')">					
+				<th:block sec:authorize="hasAnyAuthority('Admin', 'Gestor', 'Expedidor')">					
 					<a class="nav-item nav-link" th:href="@{/orders}">Pedidos</a>																								
 					<a class="nav-item nav-link" th:href="@{/shipping_rates}">Envio</a>					
 				</th:block>
