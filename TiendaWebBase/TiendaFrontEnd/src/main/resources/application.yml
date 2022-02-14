@@ -1,7 +1,7 @@
 server:
   port: 80
-  servlet:
-    context-path: /Tienda
+#  servlet:
+#    context-path: /Tienda
 spring:
   datasource:
     password: temporal
